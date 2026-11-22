@@ -16,7 +16,7 @@
 
   /**
    * @param {object} input input normalizzato (vedi risk.js), più facoltativi:
-   *   triglycerides, ldlMeasured (mmol/L), dbp (mmHg), acrMgG (mg/g)
+   *   triglycerides, ldlMeasured (mmol/L), dbp (mmHg), acr + acrUnit ('mg/mmol' | 'mg/g')
    * @param {object} checks caselle della checklist (vedi checklist.evaluate)
    */
   function assess(input, checks) {
@@ -35,7 +35,7 @@
     }
 
     var suggestions = checklist.suggest({
-      diabetes: input.diabetes, egfr: input.egfr, acrMgG: input.acrMgG,
+      diabetes: input.diabetes, egfr: input.egfr, acr: input.acr, acrUnit: input.acrUnit,
       microvascular3Sites: checks && checks.microvascular3Sites,
       totalChol: input.totalChol, ldl: lipids.ldl, sbp: input.sbp, dbp: input.dbp
     });

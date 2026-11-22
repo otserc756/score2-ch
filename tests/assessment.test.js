@@ -97,7 +97,9 @@
   });
 
   test('Valutazione: suggerisce IRC dai valori di eGFR e ACR', function () {
-    var r = A.assess(Object.assign({}, axenita, { egfr: 40, acrMgG: 50 }), {});
+    var r = A.assess(Object.assign({}, axenita, { egfr: 40, acr: 5, acrUnit: 'mg/mmol' }), {});
     assert.equal(r.suggestions.ckd, 'severe');
+    var r2 = A.assess(Object.assign({}, axenita, { egfr: 50, acr: 50, acrUnit: 'mg/g' }), {});
+    assert.equal(r2.suggestions.ckd, 'moderate');
   });
 })();
