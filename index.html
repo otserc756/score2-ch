@@ -238,6 +238,14 @@
 
     <aside class="results">
       <section class="card result-card" id="result" aria-live="polite"></section>
+      <section class="card" id="axenita-card">
+        <h2 data-i18n="sections.axenita">Riga per la cartella clinica</h2>
+        <textarea id="axenita-line" readonly rows="2" aria-describedby="axenita-help"></textarea>
+        <div class="axenita-actions">
+          <small class="hint" id="axenita-help" data-i18n="axenita.help"></small>
+          <button type="button" class="btn btn-primary" id="btn-copy" data-i18n="actions.copy" disabled>Copia</button>
+        </div>
+      </section>
       <section class="card" id="whatif" hidden></section>
       <p class="disclaimer" data-i18n="app.disclaimer"></p>
     </aside>
@@ -363,6 +371,7 @@
   <script src="src/i18n/de.js"></script>
   <script src="src/i18n/i18n.js"></script>
   <script src="src/ui/settings.js"></script>
+  <script src="src/ui/axenita.js"></script>
   <script src="src/ui/app.js"></script>
 </body>
 </html>

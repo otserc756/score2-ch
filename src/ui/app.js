@@ -369,6 +369,41 @@
     }
   }
 
+  function renderAxenita(a, r) {
+    const line = E.axenita.buildLine(a, r.input, lang);
+    const box = $('axenita-line');
+    box.value = line || '';
+    box.placeholder = t('axenita.empty');
+    box.style.height = 'auto';
+    box.style.height = (box.scrollHeight + 2) + 'px';
+    const btn = $('btn-copy');
+    btn.disabled = !line;
+    btn.textContent = t('actions.copy');
+  }
+
+  /** Copia negli appunti; ripiega sul vecchio metodo se l'API non è disponibile (es. file://). */
+  function copyLine() {
+    const box = $('axenita-line');
+    const text = box.value;
+    if (!text) return;
+    const done = () => {
+      const btn = $('btn-copy');
+      btn.textContent = '✓ ' + t('actions.copied');
+      setTimeout(() => { btn.textContent = t('actions.copy'); }, 1800);
+    };
+    const fallback = () => {
+      box.focus();
+      box.select();
+      try { if (document.execCommand('copy')) done(); } catch (e) { /* il testo resta selezionato */ }
+      box.setSelectionRange(0, 0);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else {
+      fallback();
+    }
+  }
+
   function update() {
     const r = readForm();
     updateVisibility(r);
@@ -377,6 +412,7 @@
     renderResult(a, r);
     renderWhatIf(a);
     renderSuggestions(a, r);
+    renderAxenita(a, r);
   }
 
   // ---------------------------------------------------------------- nuovo paziente
@@ -541,6 +577,7 @@
     });
 
     $('btn-new').addEventListener('click', newPatient);
+    $('btn-copy').addEventListener('click', copyLine);
     $('btn-reminders').addEventListener('click', () => toggleReminders());
     $('btn-reminders-close').addEventListener('click', () => toggleReminders(false));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('reminders').hidden) toggleReminders(false); });

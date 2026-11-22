@@ -190,6 +190,18 @@ input.invalid, select.invalid { border-color: var(--danger); background: #fff7f6
 .note-warning { background: var(--risk-moderate-bg); border-color: #d4a800; }
 .note-error { background: #f3f4f6; border-color: var(--border-strong); }
 
+/* Riga per Axenita */
+#axenita-line {
+  width: 100%; resize: vertical;
+  font: .88rem/1.4 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  padding: .5rem .6rem; border: 1px solid var(--border-strong); border-radius: 7px;
+  background: #fafbfc; color: var(--text);
+}
+#axenita-line:placeholder-shown { font-family: inherit; }
+.axenita-actions { display: flex; justify-content: space-between; align-items: center; gap: .8rem; margin-top: .5rem; }
+.axenita-actions .hint { margin: 0; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+
 /* Cosa cambia se */
 .whatif-table { width: 100%; border-collapse: collapse; font-size: .9rem; font-variant-numeric: tabular-nums; }
 .whatif-table th, .whatif-table td { padding: .4rem .3rem; text-align: left; border-bottom: 1px solid var(--border); }
