@@ -1,4 +1,4 @@
-# Quando si crea un tag di versione (es. v1.0.0) prepara lo zip da scaricare
+# Quando si crea un tag di versione (es. v0.9.0) prepara lo zip da scaricare
 # per l'installazione da cartella locale e lo allega a una release di GitHub.
 name: Release
 
@@ -26,4 +26,9 @@ jobs:
       - name: Crea la release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" "dist/score2-ch-${GITHUB_REF_NAME}.zip" --title "$GITHUB_REF_NAME" --generate-notes
+        run: |
+          # Le versioni 0.x e quelle con un suffisso (es. v1.0.0-rc1) escono come pre-release
+          PRE=""
+          if [[ "$GITHUB_REF_NAME" == v0.* || "$GITHUB_REF_NAME" == *-* ]]; then PRE="--prerelease"; fi
+          gh release create "$GITHUB_REF_NAME" "dist/score2-ch-${GITHUB_REF_NAME}.zip" \
+            --title "$GITHUB_REF_NAME" --generate-notes $PRE

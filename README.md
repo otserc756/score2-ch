@@ -4,6 +4,8 @@ App per calcolare il rischio cardiovascolare a 10 anni con **SCORE2**, **SCORE2-
 
 > **Avvertenza.** È uno strumento di supporto alla decisione clinica, **non un dispositivo medico certificato**. Il risultato va interpretato dal medico, insieme alla situazione clinica del paziente.
 
+> **Versione beta (0.9).** L'app è in fase di prova in studio. Le versioni 0.x sono pubblicate su GitHub come «pre-release»; la 1.0 arriverà dopo il periodo di test.
+
 ## Cosa fa
 
 - **Sceglie il modello in automatico** e indica sempre quale ha usato:
@@ -31,7 +33,7 @@ Ci sono due modi. Il primo è il più comodo, perché si aggiorna da solo.
 
 ### A. Come app dal sito (consigliato)
 
-L'indirizzo dell'app è: **https://TUO-UTENTE.github.io/score2-ch/**
+L'indirizzo dell'app è: **https://otserc756.github.io/score2-ch/**
 
 **Mac o Windows con Google Chrome o Microsoft Edge**
 1. Apri l'indirizzo qui sopra.
@@ -46,7 +48,7 @@ Dopo la prima apertura l'app funziona anche **senza internet**.
 
 ### B. Da una cartella sul computer (senza internet)
 
-1. Apri la pagina delle release del progetto su GitHub: **https://github.com/TUO-UTENTE/score2-ch/releases**
+1. Apri la pagina delle release del progetto su GitHub: **https://github.com/otserc756/score2-ch/releases**
 2. Scarica il file `score2-ch-vX.Y.Z.zip` dell'ultima versione.
 3. Fai doppio clic sullo zip per estrarlo e sposta la cartella `score2-ch` dove preferisci, per esempio in Documenti.
 4. Apri la cartella e fai doppio clic su **`index.html`**: l'app si apre nel browser.
