@@ -504,7 +504,7 @@
     $('s-logo-remove').hidden = !settings.practice.logo;
     $('s-storage-note').textContent = E.settings.storageAvailable() ? t('settings.storageNote') : t('settings.storageUnavailable');
     const v = E.version || { app: '?', build: 'dev' };
-    $('s-version').textContent = t('settings.version', { version: v.app, build: v.build });
+    $('s-version').textContent = t('settings.version', { version: v.app + (v.channel ? ' ' + v.channel : ''), build: v.build });
   }
 
   function persist(message) {
@@ -597,6 +597,7 @@
   // ---------------------------------------------------------------- avvio
   function init() {
     applyTranslations();
+    $('beta-badge').hidden = !(E.version && E.version.channel === 'beta');
     field('visitDate').value = E.age.formatSwissDate(E.age.today());
 
     form.addEventListener('submit', (e) => e.preventDefault());
