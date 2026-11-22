@@ -49,6 +49,13 @@ Le tabelle delle linee guida su academic.oup.com sono in gran parte immagini. Pe
   - L'aggiornamento 2025 sulle dislipidemie (tab. 3) usa soglie **uniche**: < 2% basso, 2–< 10% moderato, 10–< 20% alto, ≥ 20% molto alto. Confermato anche dalla pagina MDCalc di SCORE2, che le adotta citando l'aggiornamento 2025 (vedi [confronto-mdcalc.md](confronto-mdcalc.md)).
   - Per esempio, un sessantenne al 12% è "molto alto" per ESC 2021 e "alto" per il 2025, con obiettivi LDL diversi (< 1.4 contro < 1.8 mmol/L).
   - L'app segue ESC 2021, che è la linea guida di prevenzione.
+  - **Conferma svizzera:** la guida per la medicina di famiglia del Dipartimento di medicina interna dell'USZ (Rosemann et al., «Hausärztliche Guideline Dyslipidämie», 08/2026) usa le soglie per età di ESC 2021, come i calcolatori ESC (HeartScore) e come AGLA 2025. Le soglie fisse del 2025 non sono state adottate: sono una conversione pragmatica (le soglie del vecchio SCORE raddoppiate), non validata per SCORE2. Finché l'ESC non armonizza, la guida raccomanda di tenere conto dei due sistemi in parallelo.
+  - **Realizzato così (22.11.2026):**
+    - la categoria principale e quella del foglio paziente usano le soglie ESC 2021;
+    - quando le soglie ESC/EAS 2025 darebbero un grado di rischio diverso, il risultato mostra una nota per il medico, con l'obiettivo LDL corrispondente;
+    - un'opzione nelle Impostazioni aggiunge «(ESC/EAS 2025: …)» alla riga per Axenita.
+  - Non vale per SCORE2-Diabetes: nel diabete l'aggiornamento 2025 classifica in base alla durata della malattia e ai fattori di rischio, non con lo score.
+  - Aggiunto anche l'obiettivo non-HDL < 3.8 mmol/L per il rischio basso (guida USZ 2026).
 
 ## Punti aperti
 

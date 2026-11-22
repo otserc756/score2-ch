@@ -83,6 +83,7 @@
           { text: 'LDL bei sehr hohem Risiko: < 1.4 mmol/L und Senkung ≥ 50% gegenüber dem Ausgangswert. Bei einem zweiten vaskulären Ereignis innerhalb von 2 Jahren trotz maximaler Statintherapie kann < 1.0 mmol/L erwogen werden.', sources: ['esc2019lip', 'esc2025lip'] },
           { text: 'LDL bei hohem Risiko: < 1.8 mmol/L und Senkung ≥ 50%.', sources: ['esc2019lip', 'esc2025lip'] },
           { text: 'LDL bei moderatem Risiko: < 2.6 mmol/L. Bei niedrigem Risiko: < 3.0 mmol/L.', sources: ['esc2019lip', 'esc2025lip'] },
+          { text: 'Sekundäre Non-HDL-Zielwerte: sehr hoch < 2.2, hoch < 2.6, moderat < 3.4, niedrig < 3.8 mmol/L.', sources: ['esc2019lip', 'dimUsz2026'] },
           { text: 'SCORE2 niedrig bis moderat: Eine Behandlung der Risikofaktoren wird im Allgemeinen nicht empfohlen, und die Leitlinie 2021 legt keinen expliziten LDL-Zielwert fest; in der Praxis < 2.6 mmol/L (< 3.0 bei niedrigem Risiko).', sources: ['esc2021prev', 'esc2019lip'] },
           { text: 'Blutdruck: systolisch 120–129 mmHg, falls toleriert, bestätigt mit Messungen ausserhalb der Praxis; sonst so tief wie vernünftigerweise erreichbar. Weniger strenge Ziele bei symptomatischer orthostatischer Hypotonie, Alter ≥ 85 Jahre, mittelschwerer bis schwerer Gebrechlichkeit oder begrenzter Lebenserwartung.', sources: ['esc2024htn'] },
           { text: '"Erhöhter" Blutdruck (120–139/70–89 mmHg): Medikamente erwägen bei hohem Risiko (Nierenkrankheit, kardiovaskuläre Erkrankung, HMOD, familiäre Hypercholesterinämie, Diabetes) oder wenn SCORE2/SCORE2-OP ≥ 10% ist.', sources: ['esc2024htn'] },
@@ -96,6 +97,7 @@
         items: [
           { text: 'SCORE2 (40–69 Jahre) und SCORE2-OP (70–89 Jahre): Personen ohne bekannte kardiovaskuläre Erkrankung. Der Score wird bei ASCVD nicht angewendet und ist bei bereits laufender lipidsenkender Therapie mit Vorsicht zu interpretieren.', sources: ['esc2021prev', 'esc2025lip'] },
           { text: 'SCORE2-Diabetes: Diabetes Typ 2 ohne ASCVD und ohne schweren Endorganschaden, 40–69 Jahre.', sources: ['esc2023dm'] },
+          { text: 'Kategoriengrenzen: Die App verwendet die altersabhängigen Grenzwerte von ESC 2021, wie AGLA 2025, die USZ-Guideline 2026 und der ESC-Rechner HeartScore. Das Update ESC/EAS 2025 verwendet dagegen fixe Grenzwerte (< 2%, 2–< 10%, 10–< 20%, ≥ 20%), die durch Verdoppelung der alten SCORE-Grenzen entstanden und für SCORE2 nicht validiert sind. Weichen die beiden Einteilungen ab, zeigt die App dies an; zusätzlich das Lebenszeitrisiko (LIFE-CVD2) und die Risikomodifikatoren berücksichtigen.', sources: ['esc2021prev', 'esc2025lip', 'dimUsz2026'] },
           { text: 'Die Szenarien "Was ändert sich, wenn…" sind orientierende Schätzungen: Das Modell sagt das Risiko von Personen mit diesen Werten vorher, nicht die Wirkung einer Intervention.', sources: [] }
         ]
       }

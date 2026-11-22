@@ -84,6 +84,7 @@
           { text: 'LDL, rischio molto alto: < 1.4 mmol/L e riduzione ≥ 50% dal basale. Se c\'è un secondo evento vascolare entro 2 anni nonostante la terapia massimale con statina, si può considerare < 1.0 mmol/L.', sources: ['esc2019lip', 'esc2025lip'] },
           { text: 'LDL, rischio alto: < 1.8 mmol/L e riduzione ≥ 50%.', sources: ['esc2019lip', 'esc2025lip'] },
           { text: 'LDL, rischio moderato: < 2.6 mmol/L. Rischio basso: < 3.0 mmol/L.', sources: ['esc2019lip', 'esc2025lip'] },
+          { text: 'Obiettivi secondari non-HDL: molto alto < 2.2, alto < 2.6, moderato < 3.4, basso < 3.8 mmol/L.', sources: ['esc2019lip', 'dimUsz2026'] },
           { text: 'SCORE2 basso-moderato: il trattamento dei fattori di rischio in genere non è raccomandato e la linea guida 2021 non fissa un obiettivo LDL esplicito; in pratica < 2.6 mmol/L (< 3.0 se il rischio è basso).', sources: ['esc2021prev', 'esc2019lip'] },
           { text: 'Pressione: sistolica 120–129 mmHg se tollerata, confermata con misurazioni fuori dallo studio; altrimenti il valore più basso ragionevolmente raggiungibile. Obiettivi meno stretti con ipotensione ortostatica sintomatica, età ≥ 85 anni, fragilità moderata-severa o aspettativa di vita limitata.', sources: ['esc2024htn'] },
           { text: 'PA "elevata" (120–139/70–89 mmHg): considerare i farmaci se il rischio è alto (IRC, malattia CV, HMOD, ipercolesterolemia familiare, diabete) o se SCORE2/SCORE2-OP è ≥ 10%.', sources: ['esc2024htn'] },
@@ -97,6 +98,7 @@
         items: [
           { text: 'SCORE2 (40–69 anni) e SCORE2-OP (70–89 anni): persone senza malattia CV nota. Lo score non va usato in chi ha ASCVD e va interpretato con cautela in chi è già in terapia ipolipemizzante.', sources: ['esc2021prev', 'esc2025lip'] },
           { text: 'SCORE2-Diabetes: diabete tipo 2 senza ASCVD né danno d\'organo severo, 40–69 anni.', sources: ['esc2023dm'] },
+          { text: 'Soglie di categoria: l\'app usa quelle per età di ESC 2021, come AGLA 2025, la guida USZ 2026 e il calcolatore ESC HeartScore. L\'aggiornamento ESC/EAS 2025 usa invece soglie fisse (< 2%, 2–< 10%, 10–< 20%, ≥ 20%), ottenute raddoppiando quelle del vecchio SCORE e non validate per SCORE2. Se le due classificazioni divergono, l\'app lo segnala; considerare anche il rischio sull\'intera vita (LIFE-CVD2) e i modificatori di rischio.', sources: ['esc2021prev', 'esc2025lip', 'dimUsz2026'] },
           { text: 'Gli scenari "cosa cambia se" sono stime indicative: il modello predice il rischio di chi ha quei valori, non l\'effetto di un intervento.', sources: [] }
         ]
       }

@@ -33,6 +33,11 @@
       cite: 'Mach F et al. Eur Heart J 2025;46:4359',
       url: 'https://academic.oup.com/eurheartj/article/46/42/4359/8234482'
     },
+    dimUsz2026: {
+      label: { it: 'Guida USZ 2026 Dislipidemia', de: 'USZ-Guideline 2026 Dyslipidämie' },
+      cite: 'Rosemann A et al. DIM-USZ, Hausärztliche Guideline Dyslipidämie, 08/2026',
+      url: 'https://www.hausarztmedizin.uzh.ch/dam/jcr:2d09551e-e3a9-4c54-8f11-aa926f3bb3c8/DIM-Guideline_Dyslipid%C3%A4mie.pdf'
+    },
     esc2026ckd: {
       label: { it: 'ESC/ERA 2026 Malattia CV e IRC', de: 'ESC/ERA 2026 Kardiovaskuläre Erkrankung und CKD' },
       cite: 'Eur Heart J 2026, doi:10.1093/eurheartj/ehag098',
