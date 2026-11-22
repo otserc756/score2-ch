@@ -125,6 +125,12 @@
     else if (v.model === MODELS.SCORE2_DIABETES) r = score2diabetes.compute(p);
     else r = score2op.compute(p);
 
+    // Diabetici ≥ 70 anni: ESC 2023 prevede SCORE2-Diabetes solo fino a 69 anni; si usa
+    // SCORE2-OP, che include il diabete ma non HbA1c, eGFR ed età alla diagnosi.
+    if (v.model === MODELS.SCORE2_OP && p.diabetes) {
+      out.warnings.push({ field: 'diabetes', code: 'op_diabetes' });
+    }
+
     out.ok = true;
     out.risk = r.risk;
     out.uncalibrated = r.uncalibrated;

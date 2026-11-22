@@ -43,17 +43,19 @@ Le tabelle delle linee guida su academic.oup.com sono in gran parte immagini. Pe
 9. **Statina indipendentemente dai lipidi** nelle persone con HIV dai 40 anni (2025) e nell'IRC con eGFR < 60 senza terapia sostitutiva renale (2026).
 10. **Uso dello score:** l'aggiornamento 2025 conferma SCORE2/SCORE2-OP tra 40 e 89 anni, solo senza malattia CV nota. Va interpretato con cautela in chi è già in terapia ipolipemizzante.
 
-## Punti aperti che richiedono una tua decisione
+## Decisioni prese
 
-- **A. Due schemi di categorie per SCORE2.**
-  - ESC 2021 prevenzione usa soglie **per età**, come nella specifica.
+- **A. Categorie SCORE2/SCORE2-OP: ESC 2021, soglie per età** (decisione del 22.11.2026).
   - L'aggiornamento 2025 sulle dislipidemie (tab. 3) usa soglie **uniche**: < 2% basso, 2–< 10% moderato, 10–< 20% alto, ≥ 20% molto alto **[da verificare: fonte secondaria]**.
   - Per esempio, un sessantenne al 12% è "molto alto" per ESC 2021 e "alto" per il 2025, con obiettivi LDL diversi (< 1.4 contro < 1.8 mmol/L).
-  - Oggi l'app usa ESC 2021.
+  - L'app segue ESC 2021, che è la linea guida di prevenzione.
+
+## Punti aperti
+
 - **B. Diabetici di 70 anni o più.**
   - ESC 2023 indica SCORE2-Diabetes per 40–69 anni e non dice nulla oltre i 70.
   - La linea guida ESC/ERA 2026 su CV e IRC indica SCORE2-Diabetes **dai 40 anni, senza limite superiore**.
-  - Oggi l'app usa SCORE2-OP oltre i 69 anni, come nella specifica, con le soglie per età di ESC 2021.
+  - L'app usa SCORE2-OP oltre i 69 anni, come nella specifica, con le soglie per età di ESC 2021, e mostra un avviso (`op_diabetes`).
 - **C. Componente IRC (CKD add-on).** La linea guida 2026 raccomanda SCORE2 / SCORE2-OP con il "CKD add-on", cioè con eGFR e albuminuria nel modello, nei pazienti con IRC. Non è implementato: richiede coefficienti aggiuntivi (Matsushita et al., 2023) da reperire e verificare.
 
 ## Da verificare a mano sul PDF

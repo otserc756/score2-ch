@@ -64,6 +64,8 @@
     var r = R.calculate(patient({ age: 75, diabetes: true }));
     assert.equal(r.ok, true);
     assert.equal(r.model, 'SCORE2-OP');
+    assert.deepEqual(codes(r.warnings), ['op_diabetes']);
+    assert.deepEqual(codes(R.calculate(patient({ age: 75 })).warnings), []);
   });
 
   test('calculate: regione predefinita "low" se non indicata', function () {
