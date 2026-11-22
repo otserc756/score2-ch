@@ -46,7 +46,7 @@ Le tabelle delle linee guida su academic.oup.com sono in gran parte immagini. Pe
 ## Decisioni prese
 
 - **A. Categorie SCORE2/SCORE2-OP: ESC 2021, soglie per età** (decisione del 22.11.2026).
-  - L'aggiornamento 2025 sulle dislipidemie (tab. 3) usa soglie **uniche**: < 2% basso, 2–< 10% moderato, 10–< 20% alto, ≥ 20% molto alto **[da verificare: fonte secondaria]**.
+  - L'aggiornamento 2025 sulle dislipidemie (tab. 3) usa soglie **uniche**: < 2% basso, 2–< 10% moderato, 10–< 20% alto, ≥ 20% molto alto. Confermato anche dalla pagina MDCalc di SCORE2, che le adotta citando l'aggiornamento 2025 (vedi [confronto-mdcalc.md](confronto-mdcalc.md)).
   - Per esempio, un sessantenne al 12% è "molto alto" per ESC 2021 e "alto" per il 2025, con obiettivi LDL diversi (< 1.4 contro < 1.8 mmol/L).
   - L'app segue ESC 2021, che è la linea guida di prevenzione.
 
