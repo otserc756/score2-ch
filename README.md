@@ -4,7 +4,7 @@ App per calcolare il rischio cardiovascolare a 10 anni con **SCORE2**, **SCORE2-
 
 > **Avvertenza.** È uno strumento di supporto alla decisione clinica, **non un dispositivo medico certificato**. Il risultato va interpretato dal medico, insieme alla situazione clinica del paziente.
 
-> **Versione beta (0.9).** L'app è in fase di prova in studio. Le versioni 0.x sono pubblicate su GitHub come «pre-release»; la 1.0 arriverà dopo il periodo di test.
+> **Versione beta (0.9).** L'app è in fase di prova in studio. Le versioni 0.x sono pubblicate su GitHub come «pre-release»; la 1.0 arriverà dopo il periodo di test. Cosa cambia in ogni versione: [note di versione](CHANGELOG.md).
 
 ## Cosa fa
 
