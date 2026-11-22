@@ -1,0 +1,102 @@
+/*
+ * Foglio A4 per il paziente.
+ * Sullo schermo è nascosto; in stampa si vede solo lui (se c'è un risultato).
+ * Leggibile anche in bianco e nero: ogni colore è accompagnato da testo, simboli e bordi.
+ * Per controllarlo sullo schermo: index.html?anteprima
+ */
+
+.sheet { display: none; }
+body.sheet-preview { background: #888; }
+body.sheet-preview > *:not(#sheet) { display: none !important; }
+body.sheet-preview #sheet.has-content { display: block; }
+body.sheet-preview .sheet-page {
+  box-sizing: border-box; width: 210mm; min-height: 297mm; margin: 8mm auto; padding: 12mm 14mm;
+  background: #fff; box-shadow: 0 4px 30px rgba(0, 0, 0, .35);
+}
+
+@page { size: A4; margin: 12mm 14mm; }
+
+@media print {
+  html, body { background: #fff !important; }
+  body.has-sheet > *:not(#sheet) { display: none !important; }
+  body.has-sheet #sheet { display: block; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* --- Impaginazione del foglio (usata sia in stampa sia nell'anteprima) --- */
+.sheet-page {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.32;
+  color: #000;
+}
+.sheet-page h1, .sheet-page h2 { margin: 0; line-height: 1.2; }
+.sheet-page h2 { font-size: 11pt; margin-bottom: 1.5mm; }
+.sheet-page p { margin: 1mm 0; }
+.sheet-page section { break-inside: avoid; }
+
+.sheet-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 6mm; padding-bottom: 2mm; border-bottom: 0.6pt solid #000; font-size: 8.5pt; color: #222; }
+.sheet-head:empty { display: none; }
+.sheet-logo { max-height: 16mm; max-width: 50mm; object-fit: contain; order: 2; }
+.sheet-practice-name { font-weight: 700; font-size: 11pt; color: #000; }
+
+.sheet-title { font-size: 17pt; margin: 3mm 0 2mm; }
+
+.sheet-patient { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3mm; margin: 0 0 3mm; }
+.sheet-patient dt { font-size: 8pt; color: #444; text-transform: uppercase; letter-spacing: .04em; }
+.sheet-patient dd { margin: .5mm 0 0; font-weight: 600; font-size: 11pt; border-bottom: 0.5pt solid #999; min-height: 6mm; }
+
+/* Rischio */
+.sheet-risk { border: 1pt solid #000; border-radius: 3mm; padding: 3mm 4mm 3mm; margin-bottom: 3mm; }
+.sheet-risk-main { display: flex; gap: 6mm; align-items: center; }
+.sheet-risk-number { display: flex; flex-direction: column; align-items: center; min-width: 32mm; }
+.sheet-risk-pct { font-size: 28pt; font-weight: 800; line-height: 1; }
+.sheet-risk-cap { font-size: 8.5pt; color: #333; margin-top: 1mm; }
+.sheet-risk-text { flex: 1; }
+.sheet-risk-level { font-size: 13pt; font-weight: 800; }
+
+.sheet-scale { display: grid; gap: 1.5mm; margin-top: 2.5mm; }
+.sheet-scale-3 { grid-template-columns: repeat(3, 1fr); }
+.sheet-scale-4 { grid-template-columns: repeat(4, 1fr); }
+.sheet-seg {
+  position: relative; text-align: center; padding: 1.5mm 1mm 1.6mm;
+  border: 0.6pt solid #666; border-radius: 1.5mm; font-size: 8.5pt;
+}
+.sheet-seg-label { display: block; font-weight: 700; }
+.sheet-seg-range { display: block; font-size: 7.5pt; color: #222; }
+.sheet-seg.current { border: 2.2pt solid #000; }
+.sheet-seg.current .sheet-seg-label { font-size: 9.5pt; }
+.sheet-seg-marker { display: block; margin-top: .8mm; font-weight: 800; font-size: 8.5pt; }
+.seg-low, .seg-lowModerate { background: #d5ecd6; }
+.seg-moderate { background: #fff1b8; }
+.seg-high { background: #ffd4a8; }
+.seg-veryHigh { background: #f6b9b4; }
+.seg-low.current, .seg-lowModerate.current { background: #8fcd93; }
+.seg-moderate.current { background: #ffdf5e; }
+.seg-high.current { background: #ffab57; }
+.seg-veryHigh.current { background: #ec7a72; }
+
+/* Valori */
+.sheet-values { margin-bottom: 3mm; }
+.sheet-table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+.sheet-table th, .sheet-table td { text-align: left; padding: 1mm 2mm; border-bottom: 0.5pt solid #999; vertical-align: top; }
+.sheet-table thead th { font-size: 8pt; color: #333; font-weight: 600; border-bottom: 0.8pt solid #000; }
+.sheet-table tbody th { font-weight: 600; width: 34%; }
+.sheet-table td.muted { color: #666; }
+.sheet-status { width: 8mm; text-align: center !important; font-weight: 800; font-size: 11pt; }
+.sheet-footnote { font-size: 7.8pt; color: #333; margin-top: 1.2mm; }
+
+/* Cosa cambia se */
+.sheet-whatif { border: 0.6pt solid #666; border-radius: 2mm; padding: 2mm 4mm; margin-bottom: 3mm; background: #f4f6f8; }
+.sheet-whatif ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 8mm; }
+.sheet-whatif li { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; padding: .6mm 0; border-bottom: 0.4pt dotted #999; }
+.sheet-whatif li.all { font-weight: 700; }
+.sheet-whatif strong { white-space: nowrap; }
+
+/* Consigli */
+.sheet-tips ul { margin: 0; padding-left: 4mm; display: grid; grid-template-columns: 1fr 1fr; column-gap: 8mm; }
+.sheet-tips li { margin-bottom: 1.2mm; }
+
+.sheet-discuss { margin-top: 2.5mm !important; padding: 2mm 4mm; border-left: 2pt solid #000; background: #f4f6f8; font-weight: 600; }
+
+.sheet-foot { display: flex; justify-content: space-between; gap: 4mm; margin-top: 3mm; padding-top: 1.5mm; border-top: 0.5pt solid #999; font-size: 7.5pt; color: #444; }

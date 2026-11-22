@@ -7,6 +7,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file:; img-src 'self' file: data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
   <title>SCORE2 · Rischio CV</title>
   <link rel="stylesheet" href="src/styles/app.css">
+  <link rel="stylesheet" href="src/styles/print.css">
 </head>
 <body>
   <header class="topbar">
@@ -238,6 +239,7 @@
 
     <aside class="results">
       <section class="card result-card" id="result" aria-live="polite"></section>
+      <button type="button" class="btn btn-primary btn-print" id="btn-print" data-i18n="actions.print" disabled>Stampa foglio paziente</button>
       <section class="card" id="axenita-card">
         <h2 data-i18n="sections.axenita">Riga per la cartella clinica</h2>
         <textarea id="axenita-line" readonly rows="2" aria-describedby="axenita-help"></textarea>
@@ -250,6 +252,9 @@
       <p class="disclaimer" data-i18n="app.disclaimer"></p>
     </aside>
   </main>
+
+  <!-- Foglio A4 per il paziente: visibile solo in stampa -->
+  <section id="sheet" class="sheet" aria-hidden="true"></section>
 
   <!-- Promemoria per il medico -->
   <aside id="reminders" class="drawer" hidden aria-labelledby="reminders-title">
@@ -372,6 +377,7 @@
   <script src="src/i18n/i18n.js"></script>
   <script src="src/ui/settings.js"></script>
   <script src="src/ui/axenita.js"></script>
+  <script src="src/ui/sheet.js"></script>
   <script src="src/ui/app.js"></script>
 </body>
 </html>

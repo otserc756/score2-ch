@@ -404,6 +404,38 @@
     }
   }
 
+  // ---------------------------------------------------------------- foglio paziente
+  let savedTitle = null;
+
+  /** Prepara il foglio nella lingua scelta per il paziente; restituisce false se non c'è risultato. */
+  function renderSheet() {
+    const box = $('sheet');
+    const st = lastAssessment;
+    const model = st ? E.sheet.buildModel(st.assessment, st.read, settings) : null;
+    document.body.classList.toggle('has-sheet', !!model);
+    box.classList.toggle('has-content', !!model);
+    if (!model) { box.textContent = ''; return false; }
+    const sl = settings.sheetLanguage;
+    E.sheet.render(box, model, (k, p) => E.i18n.t(sl, k, p), E.age.formatSwissDate, E.age.today());
+    return true;
+  }
+
+  /** Nome proposto per il PDF ("Salva come PDF" usa il titolo della pagina). */
+  function setPrintTitle() {
+    const st = lastAssessment;
+    if (!st) return;
+    const p = st.read.patient;
+    const parts = ['SCORE2', [p.lastName, p.firstName].filter(Boolean).join(' '),
+      p.visit ? E.age.formatSwissDate(p.visit) : ''].filter(Boolean);
+    savedTitle = document.title;
+    document.title = parts.join(' - ');
+  }
+
+  function printSheet() {
+    if (!renderSheet()) return;
+    window.print();
+  }
+
   function update() {
     const r = readForm();
     updateVisibility(r);
@@ -413,6 +445,8 @@
     renderWhatIf(a);
     renderSuggestions(a, r);
     renderAxenita(a, r);
+    $('btn-print').disabled = !(a.calc.ok || a.category);
+    if (document.body.classList.contains('sheet-preview')) renderSheet();
   }
 
   // ---------------------------------------------------------------- nuovo paziente
@@ -578,6 +612,12 @@
 
     $('btn-new').addEventListener('click', newPatient);
     $('btn-copy').addEventListener('click', copyLine);
+    $('btn-print').addEventListener('click', printSheet);
+    // Anche Cmd/Ctrl+P stampa il foglio
+    window.addEventListener('beforeprint', () => { renderSheet(); setPrintTitle(); });
+    window.addEventListener('afterprint', () => { if (savedTitle) { document.title = savedTitle; savedTitle = null; } });
+    // Anteprima a schermo per controllare l'impaginazione: index.html?anteprima
+    if (/[?&]anteprima\b/.test(location.search)) document.body.classList.add('sheet-preview');
     $('btn-reminders').addEventListener('click', () => toggleReminders());
     $('btn-reminders-close').addEventListener('click', () => toggleReminders(false));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !$('reminders').hidden) toggleReminders(false); });
