@@ -4,7 +4,7 @@
   var test = h.test, assert = h.assert, L = h.lib;
   var S = L.reminders.sources;
 
-  ['it'].forEach(function (lang) {
+  ['it', 'de'].forEach(function (lang) {
     var R = L.reminders[lang];
 
     test('Promemoria ' + lang + ': ogni fonte citata esiste in sources.js', function () {
