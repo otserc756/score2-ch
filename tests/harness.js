@@ -41,7 +41,8 @@
         },
         i18n: require('../src/i18n/i18n.js'),
         settings: require('../src/ui/settings.js'),
-        axenita: require('../src/ui/axenita.js')
+        axenita: require('../src/ui/axenita.js'),
+        sheet: require('../src/ui/sheet.js')
       }
     };
     return;

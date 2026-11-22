@@ -247,6 +247,64 @@
         egfr: 'eGFR'
       }
     },
+    sheet: {
+      title: 'Ihr Herz-Kreislauf-Risiko',
+      patient: 'Patient/in',
+      birthDate: 'Geburtsdatum',
+      visitDate: 'Datum der Konsultation',
+      yourRisk: 'Ihr Risiko in den nächsten 10 Jahren',
+      inTenYears: 'in 10 Jahren',
+      riskLevel: 'Risiko {category}',
+      perHundred: 'Von 100 Personen mit Ihren Werten erleiden in den nächsten 10 Jahren etwa {n} einen Herzinfarkt, einen Schlaganfall oder ein anderes schweres Herz-Kreislauf-Ereignis.',
+      perHundredLess1: 'Von 100 Personen mit Ihren Werten erleidet in den nächsten 10 Jahren weniger als eine einen Herzinfarkt, einen Schlaganfall oder ein anderes schweres Herz-Kreislauf-Ereignis.',
+      fromConditions: 'Aufgrund Ihrer gesundheitlichen Situation gilt Ihr Risiko unabhängig von der Berechnung als {category}.',
+      you: 'Sie',
+      values: 'Ihre Werte und die Zielwerte',
+      colValue: 'Ihr Wert',
+      colTarget: 'Zielwert',
+      row: {
+        sbp: 'Blutdruck',
+        ldl: 'LDL-Cholesterin',
+        nonHdl: 'Non-HDL-Cholesterin',
+        hba1c: 'HbA1c (Diabetes)',
+        smoking: 'Rauchen'
+      },
+      target: {
+        sbp: 'systolisch 120–129 mmHg *',
+        hba1c: 'in der Regel unter 53 mmol/mol (7%)',
+        smoking: 'nicht rauchen',
+        below: 'unter {value} mmol/L'
+      },
+      smokingYes: 'raucht',
+      smokingNo: 'raucht nicht',
+      ldlCalculated: '(berechnet)',
+      sbpNote: '* Falls gut vertragen. Ihre Ärztin oder Ihr Arzt kann Ihnen einen anderen Zielwert empfehlen. ✓ = Ziel erreicht, ✗ = zu verbessern.',
+      whatIfTitle: 'Was ändert sich, wenn…',
+      whatIf: {
+        now: 'Heute',
+        quitSmoking: 'Wenn Sie mit dem Rauchen aufhören',
+        sbp130: 'Wenn der systolische Blutdruck auf 130 mmHg sinkt',
+        tcMinus1: 'Wenn das Gesamtcholesterin um 1 mmol/L sinkt',
+        hba1c53: 'Wenn das HbA1c auf 53 mmol/mol (7%) sinkt',
+        all: 'Mit allen diesen Änderungen zusammen'
+      },
+      outOf100: '{n} von 100',
+      whatIfNote: 'Orientierende Schätzungen: Sie zeigen das Risiko von Personen, die diese Werte bereits haben, und garantieren nicht die Wirkung einer Änderung.',
+      tipsTitle: 'Was Sie tun können',
+      tips: {
+        smoking: { title: 'Hören Sie mit dem Rauchen auf.', text: 'Das ist der wirksamste einzelne Schritt für Herz und Gefässe. Ihre Ärztin oder Ihr Arzt unterstützt Sie mit Beratung und, falls sinnvoll, mit Medikamenten.' },
+        bloodPressure: { title: 'Behalten Sie den Blutdruck im Griff.', text: 'Messen Sie ihn auch zu Hause, salzen Sie sparsam (weniger als ein Teelöffel pro Tag) und nehmen Sie die verordneten Medikamente regelmässig ein.' },
+        diabetes: { title: 'Behandeln Sie den Diabetes gut.', text: 'Halten Sie sich an die Therapie, kontrollieren Sie den Blutzucker wie vereinbart und lassen Sie Augen, Nieren und Füsse regelmässig untersuchen.' },
+        diet: { title: 'Ernähren Sie sich gesund.', text: 'Bevorzugen Sie Gemüse, Obst, Hülsenfrüchte, Vollkornprodukte, Fisch und Olivenöl. Schränken Sie rotes und verarbeitetes Fleisch, Butter, Süssigkeiten und süsse Getränke ein.' },
+        activity: { title: 'Bewegen Sie sich jeden Tag.', text: 'Mindestens 150 Minuten pro Woche mit mässiger Intensität, zum Beispiel zügiges Gehen, Velofahren oder Schwimmen. Jeder Schritt zählt.' },
+        medication: { title: 'Nehmen Sie Ihre Medikamente regelmässig.', text: 'Wenn Ihnen Medikamente gegen Cholesterin oder Blutdruck verordnet wurden, nehmen Sie sie jeden Tag ein, auch wenn Sie sich gut fühlen.' },
+        checkups: { title: 'Lassen Sie die Werte kontrollieren.', text: 'Lassen Sie Blutdruck und Cholesterin so messen, wie mit Ihrer Ärztin oder Ihrem Arzt vereinbart.' }
+      },
+      discuss: 'Dieses Ergebnis ist eine statistische Schätzung, keine Diagnose. Besprechen Sie es mit Ihrer Ärztin oder Ihrem Arzt, die oder der es zusammen mit Ihrer persönlichen Situation beurteilt.',
+      footModel: 'Berechnung: {model} (Europäische Gesellschaft für Kardiologie), {region}.',
+      footNoModel: 'Beurteilung gemäss den Leitlinien der Europäischen Gesellschaft für Kardiologie.',
+      printed: 'Gedruckt am {date}'
+    },
     units: {
       mmHg: 'mmHg',
       mmolL: 'mmol/L',

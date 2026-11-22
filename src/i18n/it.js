@@ -247,6 +247,64 @@
         egfr: 'eGFR'
       }
     },
+    sheet: {
+      title: 'Il Suo rischio cardiovascolare',
+      patient: 'Paziente',
+      birthDate: 'Data di nascita',
+      visitDate: 'Data della visita',
+      yourRisk: 'Il Suo rischio nei prossimi 10 anni',
+      inTenYears: 'in 10 anni',
+      riskLevel: 'Rischio {category}',
+      perHundred: 'Su 100 persone con i Suoi valori, circa {n} avranno un infarto, un ictus o un altro evento cardiovascolare grave nei prossimi 10 anni.',
+      perHundredLess1: 'Su 100 persone con i Suoi valori, meno di una avrà un infarto, un ictus o un altro evento cardiovascolare grave nei prossimi 10 anni.',
+      fromConditions: 'Per le Sue condizioni di salute il rischio è considerato {category}, indipendentemente dal calcolo.',
+      you: 'Lei',
+      values: 'I Suoi valori e gli obiettivi',
+      colValue: 'Il Suo valore',
+      colTarget: 'Obiettivo',
+      row: {
+        sbp: 'Pressione arteriosa',
+        ldl: 'Colesterolo LDL',
+        nonHdl: 'Colesterolo non-HDL',
+        hba1c: 'HbA1c (diabete)',
+        smoking: 'Fumo'
+      },
+      target: {
+        sbp: 'sistolica 120–129 mmHg *',
+        hba1c: 'di regola sotto 53 mmol/mol (7%)',
+        smoking: 'non fumare',
+        below: 'sotto {value} mmol/L'
+      },
+      smokingYes: 'fuma',
+      smokingNo: 'non fuma',
+      ldlCalculated: '(calcolato)',
+      sbpNote: '* Se ben tollerata. Il Suo medico può indicarLe un obiettivo diverso. ✓ = obiettivo raggiunto, ✗ = da migliorare.',
+      whatIfTitle: 'Cosa succede se…',
+      whatIf: {
+        now: 'Oggi',
+        quitSmoking: 'Se smette di fumare',
+        sbp130: 'Se la pressione sistolica scende a 130 mmHg',
+        tcMinus1: 'Se il colesterolo totale scende di 1 mmol/L',
+        hba1c53: 'Se l\'HbA1c scende a 53 mmol/mol (7%)',
+        all: 'Con tutti questi cambiamenti insieme'
+      },
+      outOf100: '{n} su 100',
+      whatIfNote: 'Stime indicative: mostrano il rischio di chi ha già questi valori, non garantiscono l\'effetto di un cambiamento.',
+      tipsTitle: 'Cosa può fare Lei',
+      tips: {
+        smoking: { title: 'Smetta di fumare.', text: 'È il passo singolo più efficace per proteggere cuore e vasi. Il Suo medico può aiutarLa con consigli e, se utile, con farmaci.' },
+        bloodPressure: { title: 'Tenga sotto controllo la pressione.', text: 'La misuri anche a casa, usi poco sale (meno di un cucchiaino al giorno) e prenda regolarmente i farmaci prescritti.' },
+        diabetes: { title: 'Curi bene il diabete.', text: 'Segua la terapia, controlli la glicemia come concordato e faccia i controlli regolari di occhi, reni e piedi.' },
+        diet: { title: 'Mangi in modo sano.', text: 'Scelga verdura, frutta, legumi, cereali integrali, pesce e olio d\'oliva. Limiti carni rosse e lavorate, burro, dolci e bevande zuccherate.' },
+        activity: { title: 'Si muova ogni giorno.', text: 'Almeno 150 minuti alla settimana di attività moderata, come camminare a passo svelto, andare in bicicletta o nuotare. Ogni passo conta.' },
+        medication: { title: 'Prenda i farmaci con regolarità.', text: 'Se Le sono stati prescritti farmaci per il colesterolo o la pressione, li assuma ogni giorno, anche quando si sente bene.' },
+        checkups: { title: 'Ripeta i controlli.', text: 'Faccia misurare pressione e colesterolo come concordato con il Suo medico.' }
+      },
+      discuss: 'Questo risultato è una stima statistica, non una diagnosi. Ne parli con il Suo medico, che lo valuta insieme alla Sua situazione personale.',
+      footModel: 'Calcolo: {model} (Società Europea di Cardiologia), {region}.',
+      footNoModel: 'Valutazione secondo le linee guida della Società Europea di Cardiologia.',
+      printed: 'Stampato il {date}'
+    },
     units: {
       mmHg: 'mmHg',
       mmolL: 'mmol/L',

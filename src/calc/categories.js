@@ -42,6 +42,9 @@
     low:         { ldlBelow: 3.0, minReductionPct: null }
   };
 
+  // Obiettivi secondari non-HDL (ESC/EAS 2019): molto alto < 2.2, alto < 2.6, moderato < 3.4 mmol/L
+  var NON_HDL_TARGETS = { veryHigh: 2.2, high: 2.6, moderate: 3.4, lowModerate: 3.4, low: null };
+
   /** Rischio 0–1 → percentuale arrotondata a un decimale. */
   function roundPercent(r) { return Math.round(r * 1000) / 10; }
 
@@ -78,6 +81,12 @@
   }
 
   function ldlTarget(category) { return LDL_TARGETS[category] || null; }
+  function nonHdlTarget(category) { return NON_HDL_TARGETS[category] || null; }
+
+  /** Categorie della scala mostrata al paziente, nell'ordine. */
+  function scaleFor(scheme) {
+    return scheme === 'ESC2023-DM' ? ['low', 'moderate', 'high', 'veryHigh'] : ['lowModerate', 'high', 'veryHigh'];
+  }
 
   var api = {
     RANK: RANK,
@@ -87,7 +96,10 @@
     roundPercent: roundPercent,
     fromScore: fromScore,
     worst: worst,
-    ldlTarget: ldlTarget
+    ldlTarget: ldlTarget,
+    NON_HDL_TARGETS: NON_HDL_TARGETS,
+    nonHdlTarget: nonHdlTarget,
+    scaleFor: scaleFor
   };
 
   if (isNode) module.exports = api;
