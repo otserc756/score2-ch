@@ -6,6 +6,11 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file:; img-src 'self' file: data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
   <title>SCORE2 · Rischio CV</title>
+  <meta name="theme-color" content="#0f5ea8">
+  <meta name="apple-mobile-web-app-title" content="SCORE2">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="src/styles/app.css">
   <link rel="stylesheet" href="src/styles/print.css">
 </head>
@@ -352,11 +357,13 @@
         </div>
         <p class="hint" id="s-status" role="status"></p>
         <p class="hint" id="s-storage-note"></p>
+        <p class="hint" id="s-version"></p>
       </fieldset>
     </form>
   </dialog>
 
   <script src="config.js"></script>
+  <script src="src/version.js"></script>
   <script src="src/calc/calibration.js"></script>
   <script src="src/calc/score2.js"></script>
   <script src="src/calc/score2op.js"></script>
@@ -379,5 +386,6 @@
   <script src="src/ui/axenita.js"></script>
   <script src="src/ui/sheet.js"></script>
   <script src="src/ui/app.js"></script>
+  <script src="src/ui/pwa.js"></script>
 </body>
 </html>

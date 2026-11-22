@@ -192,7 +192,8 @@
       importError: 'Ungültige Datei: Einstellungen nicht importiert.',
       imported: 'Einstellungen importiert.',
       storageNote: 'Die Einstellungen bleiben nur in diesem Browser. Exportieren Sie sie, um sie auf einen anderen Computer zu übertragen. Patientendaten werden nie gespeichert.',
-      storageUnavailable: 'Dieser Browser erlaubt das Speichern der Einstellungen nicht: Sie gelten nur, bis die Seite geschlossen wird.'
+      storageUnavailable: 'Dieser Browser erlaubt das Speichern der Einstellungen nicht: Sie gelten nur, bis die Seite geschlossen wird.',
+      version: 'Version {version} ({build})'
     },
     reminders: {
       title: 'Hinweise für die Ärztin / den Arzt',

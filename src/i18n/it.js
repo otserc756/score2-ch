@@ -192,7 +192,8 @@
       importError: 'File non valido: impostazioni non importate.',
       imported: 'Impostazioni importate.',
       storageNote: 'Le impostazioni restano solo in questo browser. Esportale per trasferirle su un altro computer. I dati dei pazienti non vengono mai salvati.',
-      storageUnavailable: 'Questo browser non permette di salvare le impostazioni: valgono solo fino alla chiusura della pagina.'
+      storageUnavailable: 'Questo browser non permette di salvare le impostazioni: valgono solo fino alla chiusura della pagina.',
+      version: 'Versione {version} ({build})'
     },
     reminders: {
       title: 'Promemoria per il medico',

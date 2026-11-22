@@ -503,6 +503,8 @@
     if (settings.practice.logo) prev.src = settings.practice.logo; else prev.removeAttribute('src');
     $('s-logo-remove').hidden = !settings.practice.logo;
     $('s-storage-note').textContent = E.settings.storageAvailable() ? t('settings.storageNote') : t('settings.storageUnavailable');
+    const v = E.version || { app: '?', build: 'dev' };
+    $('s-version').textContent = t('settings.version', { version: v.app, build: v.build });
   }
 
   function persist(message) {
