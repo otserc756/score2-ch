@@ -24,7 +24,8 @@ App per calcolare il rischio cardiovascolare a 10 anni con **SCORE2**, **SCORE2-
 
 - Tutti i calcoli avvengono **nel computer**, dentro il browser. Nessun dato viene inviato in rete: la pagina blocca qualsiasi connessione verso l'esterno.
 - **I dati del paziente non vengono salvati**: chiudendo la pagina o premendo «Nuovo paziente» spariscono.
-- Si salvano solo le **impostazioni dello studio**, nel browser: lingue, regione di rischio, intestazione e logo.
+- Si salvano solo le **impostazioni dello studio**, nel browser: lingue, regione di rischio, intestazione e logo. Oltre a queste, il browser ricorda solo che l'avviso iniziale è stato confermato.
+- Durante la beta il sito chiede ai motori di ricerca di **non indicizzarlo**: per usarlo serve il link.
 - Nessuna statistica d'uso, nessun font o script esterno.
 
 ## Installazione

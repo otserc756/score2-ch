@@ -5,6 +5,21 @@ Le versioni 0.x sono **beta**, in prova in studio. Su GitHub sono pubblicate com
 
 Il formato di ogni versione è: **Aggiunto** (funzioni nuove), **Modificato** (cambiamenti a funzioni esistenti), **Corretto** (errori risolti), **Contenuti clinici** (cambiamenti di soglie, obiettivi o testi basati sulle linee guida).
 
+## [0.9.2] – 22.11.2026
+
+### Aggiunto
+- **Avviso al primo avvio**, in italiano o tedesco:
+  - strumento di supporto alla decisione clinica per medici, non un dispositivo medico certificato;
+  - il risultato va interpretato dal medico, sotto la sua responsabilità;
+  - è una versione beta;
+  - i dati dei pazienti non vengono salvati né inviati.
+
+  Si conferma una volta per browser. Se il testo dell'avviso cambia in modo sostanziale, viene richiesto di nuovo.
+
+### Modificato
+- **Fuori dai motori di ricerca:** il sito chiede ai motori di ricerca di non indicizzare né archiviare la pagina. Chi ha il link la usa come prima.
+- **Sito pubblicato senza README e licenza:** restano nel repository e nello zip della release.
+
 ## [0.9.1] – 22.11.2026
 
 ### Aggiunto
@@ -53,5 +68,6 @@ Prima versione beta.
 - **Installazione come app** (Chrome, Edge, Safari), funzionamento offline e aggiornamenti automatici. In alternativa si può usare lo zip da aprire in una cartella.
 - **Privacy:** nessun dato del paziente salvato o inviato; la pagina blocca qualsiasi connessione verso l'esterno.
 
+[0.9.2]: https://github.com/otserc756/score2-ch/releases/tag/v0.9.2
 [0.9.1]: https://github.com/otserc756/score2-ch/releases/tag/v0.9.1
 [0.9.0]: https://github.com/otserc756/score2-ch/releases/tag/v0.9.0

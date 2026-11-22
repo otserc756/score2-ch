@@ -5,5 +5,5 @@
 (function (root) {
   'use strict';
   var NS = (root.ESCScore = root.ESCScore || {});
-  NS.version = { app: '0.9.1', channel: 'beta', build: 'dev' };
+  NS.version = { app: '0.9.2', channel: 'beta', build: 'dev' };
 })(typeof globalThis !== 'undefined' ? globalThis : this);
