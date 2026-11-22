@@ -29,7 +29,11 @@
         units: require('../src/calc/units.js'),
         egfr: require('../src/calc/egfr.js'),
         age: require('../src/calc/age.js'),
-        risk: require('../src/calc/risk.js')
+        risk: require('../src/calc/risk.js'),
+        categories: require('../src/calc/categories.js'),
+        checklist: require('../src/calc/checklist.js'),
+        whatif: require('../src/calc/whatif.js'),
+        assessment: require('../src/calc/assessment.js')
       }
     };
     return;
