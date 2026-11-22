@@ -19,6 +19,8 @@ jobs:
           node-version: 22
       - name: Test
         run: node --test tests/*.test.js
+      - name: Note di versione da CHANGELOG.md (controlla anche che il tag coincida con src/version.js)
+        run: bash scripts/release-notes.sh "$GITHUB_REF_NAME" > release-notes.md
       - name: Prepara lo zip
         run: |
           bash scripts/build-site.sh "dist/score2-ch" "$GITHUB_REF_NAME"
@@ -31,4 +33,4 @@ jobs:
           PRE=""
           if [[ "$GITHUB_REF_NAME" == v0.* || "$GITHUB_REF_NAME" == *-* ]]; then PRE="--prerelease"; fi
           gh release create "$GITHUB_REF_NAME" "dist/score2-ch-${GITHUB_REF_NAME}.zip" \
-            --title "$GITHUB_REF_NAME" --generate-notes $PRE
+            --title "$GITHUB_REF_NAME" --notes-file release-notes.md $PRE
