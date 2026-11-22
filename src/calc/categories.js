@@ -42,8 +42,16 @@
     low:         { ldlBelow: 3.0, minReductionPct: null }
   };
 
-  // Obiettivi secondari non-HDL (ESC/EAS 2019): molto alto < 2.2, alto < 2.6, moderato < 3.4 mmol/L
-  var NON_HDL_TARGETS = { veryHigh: 2.2, high: 2.6, moderate: 3.4, lowModerate: 3.4, low: null };
+  // Obiettivi secondari non-HDL (ESC/EAS 2019; basso < 3.8 secondo la guida DIM-USZ 2026)
+  var NON_HDL_TARGETS = { veryHigh: 2.2, high: 2.6, moderate: 3.4, lowModerate: 3.4, low: 3.8 };
+
+  /*
+   * Soglie fisse dell'aggiornamento ESC/EAS 2025 sulle dislipidemie (tab. 3) per SCORE2/SCORE2-OP:
+   * < 2% basso · 2–<10% moderato · 10–<20% alto · ≥ 20% molto alto.
+   * L'app usa come categoria principale le soglie per età di ESC 2021 (come AGLA 2025, la guida
+   * DIM-USZ 2026 e il calcolatore HeartScore); queste servono solo come informazione per il medico.
+   */
+  var THRESHOLDS_2025 = { moderate: 2, high: 10, veryHigh: 20 };
 
   /** Rischio 0–1 → percentuale arrotondata a un decimale. */
   function roundPercent(r) { return Math.round(r * 1000) / 10; }
@@ -68,6 +76,19 @@
     var th = SCORE2_THRESHOLDS.filter(function (x) { return age <= x.maxAge; })[0];
     var c = pct >= th.veryHigh ? 'veryHigh' : pct >= th.high ? 'high' : 'lowModerate';
     return { category: c, scheme: 'ESC2021', percent: pct, thresholds: { high: th.high, veryHigh: th.veryHigh } };
+  }
+
+  /**
+   * Categoria secondo le soglie fisse ESC/EAS 2025. Solo per SCORE2 e SCORE2-OP
+   * (per il diabete l'aggiornamento 2025 classifica in base a durata e fattori di rischio).
+   * @returns {{category:string, percent:number, thresholds:object}|null}
+   */
+  function fromScore2025(model, riskFraction) {
+    if (model !== risk.MODELS.SCORE2 && model !== risk.MODELS.SCORE2_OP) return null;
+    var pct = roundPercent(riskFraction);
+    var t = THRESHOLDS_2025;
+    var cat = pct >= t.veryHigh ? 'veryHigh' : pct >= t.high ? 'high' : pct >= t.moderate ? 'moderate' : 'low';
+    return { category: cat, percent: pct, thresholds: t };
   }
 
   /** La più grave fra più categorie (ignora null). */
@@ -98,6 +119,8 @@
     worst: worst,
     ldlTarget: ldlTarget,
     NON_HDL_TARGETS: NON_HDL_TARGETS,
+    THRESHOLDS_2025: THRESHOLDS_2025,
+    fromScore2025: fromScore2025,
     nonHdlTarget: nonHdlTarget,
     scaleFor: scaleFor
   };

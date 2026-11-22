@@ -58,6 +58,34 @@
     assert.equal(r.lipids.ldl, null);
   });
 
+  test('Valutazione: confronto ESC/EAS 2025 quando la categoria diverge', function () {
+    var r = A.assess(axenita, {});        // 69 anni, 12.9%: ESC 2021 molto alto, 2025 alto
+    assert.equal(r.esc2025.category, 'high');
+    assert.equal(r.esc2025.differs, true);
+    assert.equal(r.esc2025.ldlTarget.ldlBelow, 1.8);
+    var same = A.assess(Object.assign({}, axenita, { smoker: false, sbp: 120, totalChol: 4.5, hdl: 1.6 }), {});
+    assert.ok(same.esc2025, 'presente');
+    // 45 anni al 2.6%: ESC 2021 alto, 2025 moderato
+    var young = A.assess({ age: 45, sex: 'female', smoker: true, diabetes: false, sbp: 130, totalChol: 5.5, hdl: 1.5, region: 'low' }, {});
+    assert.equal(young.category, 'high');
+    assert.equal(young.esc2025.category, 'moderate');
+    assert.equal(young.esc2025.differs, true);
+  });
+
+  test('Valutazione: niente confronto 2025 per SCORE2-Diabetes o se decide la checklist', function () {
+    var dm = A.assess({ age: 60, sex: 'male', smoker: false, diabetes: true, sbp: 140, totalChol: 5.5, hdl: 1.3, ageAtDiagnosis: 50, hba1c: 70, egfr: 60, region: 'low' }, {});
+    assert.equal(dm.esc2025, null);
+    assert.equal(A.assess(axenita, { ascvd: true }).esc2025, null);
+  });
+
+  test('Valutazione: categoria uguale nelle due classificazioni → differs false', function () {
+    // 55 anni al 2.0%: ESC 2021 basso-moderato (rango 1), 2025 moderato (rango 1)
+    var r = A.assess({ age: 55, sex: 'female', smoker: false, diabetes: false, sbp: 125, totalChol: 5.0, hdl: 1.6, region: 'low' }, {});
+    assert.equal(r.score.percent, 2.0);
+    assert.equal(r.esc2025.category, 'moderate');
+    assert.equal(r.esc2025.differs, false);
+  });
+
   test('Valutazione: ASCVD alza la categoria a molto alto anche con score basso', function () {
     var p = { age: 45, sex: 'female', smoker: false, diabetes: false, sbp: 120, totalChol: 5, hdl: 1.6, region: 'low' };
     var base = A.assess(p, {});

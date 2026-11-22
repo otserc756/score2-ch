@@ -43,6 +43,21 @@
 
     var score = calc.ok ? categories.fromScore(calc.model, input.age, calc.risk) : null;
     var finalCategory = categories.worst(score && score.category, checked.category);
+    var categoryFromConditions = !!checked.category && (!score || categories.RANK[checked.category] > categories.RANK[score.category]);
+
+    // Confronto con le soglie fisse ESC/EAS 2025: solo se la categoria viene dallo score
+    // e se dà un grado di rischio diverso da quello di ESC 2021.
+    var esc2025 = null;
+    if (score && checked.scoreApplies && !categoryFromConditions) {
+      var c25 = categories.fromScore2025(calc.model, calc.risk);
+      if (c25) {
+        esc2025 = {
+          category: c25.category,
+          ldlTarget: categories.ldlTarget(c25.category),
+          differs: categories.RANK[c25.category] !== categories.RANK[finalCategory]
+        };
+      }
+    }
 
     return {
       calc: calc,
@@ -50,7 +65,8 @@
       checklist: checked,               // condizioni spuntate e loro effetto
       suggestions: suggestions,         // caselle che i valori suggeriscono di spuntare
       category: finalCategory,          // categoria finale (la più grave)
-      categoryFromConditions: !!checked.category && (!score || categories.RANK[checked.category] > categories.RANK[score.category]),
+      categoryFromConditions: categoryFromConditions,
+      esc2025: esc2025,                 // categoria con le soglie fisse 2025 (null se non pertinente)
       ldlTarget: finalCategory ? categories.ldlTarget(finalCategory) : null,
       lipids: lipids,
       whatIf: calc.ok ? whatif.scenarios(input) : null

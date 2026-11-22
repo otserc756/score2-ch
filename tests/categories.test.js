@@ -47,6 +47,27 @@
     assert.equal(C.worst(null, null), null);
   });
 
+  // Soglie fisse ESC/EAS 2025 (solo informazione per il medico)
+  [
+    [1.9, 'low'], [2.0, 'moderate'], [9.9, 'moderate'], [10.0, 'high'], [19.9, 'high'], [20.0, 'veryHigh']
+  ].forEach(function (c) {
+    test('Categoria ESC/EAS 2025: ' + c[0] + '% → ' + c[1], function () {
+      assert.equal(C.fromScore2025('SCORE2', c[0] / 100).category, c[1]);
+      assert.equal(C.fromScore2025('SCORE2-OP', c[0] / 100).category, c[1]);
+    });
+  });
+
+  test('Categoria ESC/EAS 2025: non applicata a SCORE2-Diabetes', function () {
+    assert.equal(C.fromScore2025('SCORE2-Diabetes', 0.15), null);
+  });
+
+  test('Obiettivi non-HDL per categoria (basso < 3.8)', function () {
+    assert.equal(C.nonHdlTarget('veryHigh'), 2.2);
+    assert.equal(C.nonHdlTarget('high'), 2.6);
+    assert.equal(C.nonHdlTarget('moderate'), 3.4);
+    assert.equal(C.nonHdlTarget('low'), 3.8);
+  });
+
   test('Obiettivi LDL per categoria', function () {
     assert.deepEqual(C.ldlTarget('veryHigh'), { ldlBelow: 1.4, minReductionPct: 50 });
     assert.deepEqual(C.ldlTarget('high'), { ldlBelow: 1.8, minReductionPct: 50 });
