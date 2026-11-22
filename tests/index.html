@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test SCORE2</title>
+  <style>
+    body { font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; margin: 24px; color: #1a1a1a; background: #fff; }
+    h1 { font-size: 20px; }
+    .summary { font-weight: 600; font-size: 17px; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 2px 0; }
+    .pass { color: #1e7a34; }
+    .fail { color: #b3261e; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Test del motore di calcolo</h1>
+  <p>Gli stessi test girano in Node con <code>node --test</code>.</p>
+  <div id="results"></div>
+
+  <script src="../src/calc/calibration.js"></script>
+  <script src="../src/calc/score2.js"></script>
+  <script src="../src/calc/score2op.js"></script>
+  <script src="../src/calc/score2diabetes.js"></script>
+  <script src="../src/calc/units.js"></script>
+  <script src="../src/calc/egfr.js"></script>
+  <script src="../src/calc/age.js"></script>
+  <script src="../src/calc/risk.js"></script>
+  <script src="harness.js"></script>
+  <script src="score2.test.js"></script>
+  <script src="score2op.test.js"></script>
+  <script src="score2diabetes.test.js"></script>
+  <script src="risk.test.js"></script>
+  <script src="age.test.js"></script>
+  <script src="units.test.js"></script>
+  <script src="egfr.test.js"></script>
+  <script>window.testResults = ESCTest.run(document.getElementById('results'));</script>
+</body>
+</html>
