@@ -36,8 +36,11 @@
         assessment: require('../src/calc/assessment.js'),
         reminders: {
           sources: require('../src/reminders/sources.js'),
-          it: require('../src/reminders/reminders.it.js')
-        }
+          it: require('../src/reminders/reminders.it.js'),
+          de: require('../src/reminders/reminders.de.js')
+        },
+        i18n: require('../src/i18n/i18n.js'),
+        settings: require('../src/ui/settings.js')
       }
     };
     return;

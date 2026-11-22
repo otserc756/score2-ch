@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file:; img-src 'self' file: data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>SCORE2 · Rischio CV</title>
+  <link rel="stylesheet" href="src/styles/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1 data-i18n="app.title">Rischio cardiovascolare a 10 anni</h1>
+      <p data-i18n="app.subtitle">SCORE2 · SCORE2-OP · SCORE2-Diabetes (ESC)</p>
+    </div>
+    <nav class="topbar-actions">
+      <div class="seg seg-small" role="radiogroup" aria-label="Lingua / Sprache">
+        <label><input type="radio" name="uiLanguage" value="it"><span>IT</span></label>
+        <label><input type="radio" name="uiLanguage" value="de"><span>DE</span></label>
+      </div>
+      <button type="button" class="btn" id="btn-reminders" aria-controls="reminders" aria-expanded="false" data-i18n="actions.reminders">Promemoria</button>
+      <button type="button" class="btn" id="btn-settings" data-i18n="actions.settings">Impostazioni</button>
+      <button type="button" class="btn btn-primary" id="btn-new" data-i18n="actions.newPatient">Nuovo paziente</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <form id="form" class="inputs" autocomplete="off" novalidate>
+
+      <!-- Paziente -->
+      <section class="card">
+        <h2 data-i18n="sections.patient">Paziente</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="f-firstName" data-i18n="fields.firstName">Nome</label>
+            <input id="f-firstName" name="firstName" type="text" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="field">
+            <label for="f-lastName" data-i18n="fields.lastName">Cognome</label>
+            <input id="f-lastName" name="lastName" type="text" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="field">
+            <label for="f-birthDate" data-i18n="fields.birthDate">Data di nascita</label>
+            <input id="f-birthDate" name="birthDate" type="text" inputmode="numeric" data-i18n-placeholder="hints.dateFormat" placeholder="gg.mm.aaaa" maxlength="10">
+          </div>
+          <div class="field">
+            <label for="f-visitDate" data-i18n="fields.visitDate">Data della visita</label>
+            <input id="f-visitDate" name="visitDate" type="text" inputmode="numeric" data-i18n-placeholder="hints.dateFormat" placeholder="gg.mm.aaaa" maxlength="10">
+          </div>
+          <div class="field">
+            <label for="f-age" data-i18n="fields.age">Età</label>
+            <div class="input-unit">
+              <input id="f-age" name="age" type="text" inputmode="numeric" maxlength="3">
+              <span class="unit" data-i18n="hints.years">anni</span>
+            </div>
+            <small class="hint" id="age-hint"></small>
+          </div>
+          <div class="field">
+            <span class="label" id="lbl-sex" data-i18n="fields.sex">Sesso</span>
+            <div class="seg" role="radiogroup" aria-labelledby="lbl-sex">
+              <label><input type="radio" name="sex" value="male"><span data-i18n="fields.male">Uomo</span></label>
+              <label><input type="radio" name="sex" value="female"><span data-i18n="fields.female">Donna</span></label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fattori di rischio -->
+      <section class="card">
+        <h2 data-i18n="sections.risk">Fattori di rischio</h2>
+        <div class="grid">
+          <div class="field">
+            <span class="label" id="lbl-smoker" data-i18n="fields.smoker">Fumatore attuale</span>
+            <div class="seg" role="radiogroup" aria-labelledby="lbl-smoker">
+              <label><input type="radio" name="smoker" value="no"><span data-i18n="fields.no">No</span></label>
+              <label><input type="radio" name="smoker" value="yes"><span data-i18n="fields.yes">Sì</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label" id="lbl-diabetes" data-i18n="fields.diabetes">Diabete tipo 2</span>
+            <div class="seg" role="radiogroup" aria-labelledby="lbl-diabetes">
+              <label><input type="radio" name="diabetes" value="no"><span data-i18n="fields.no">No</span></label>
+              <label><input type="radio" name="diabetes" value="yes"><span data-i18n="fields.yes">Sì</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-sbp" data-i18n="fields.sbp">Pressione sistolica</label>
+            <div class="input-unit">
+              <input id="f-sbp" name="sbp" type="text" inputmode="decimal">
+              <span class="unit">mmHg</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-dbp"><span data-i18n="fields.dbp">Pressione diastolica</span> <em class="opt" data-i18n="hints.optional">facoltativo</em></label>
+            <div class="input-unit">
+              <input id="f-dbp" name="dbp" type="text" inputmode="decimal">
+              <span class="unit">mmHg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subhead">
+          <span class="label" id="lbl-lipidUnit" data-i18n="fields.lipidUnit">Unità dei lipidi</span>
+          <div class="seg seg-small" role="radiogroup" aria-labelledby="lbl-lipidUnit">
+            <label><input type="radio" name="lipidUnit" value="mmol" checked><span>mmol/L</span></label>
+            <label><input type="radio" name="lipidUnit" value="mgdl"><span>mg/dL</span></label>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="field">
+            <label for="f-totalChol" data-i18n="fields.totalChol">Colesterolo totale</label>
+            <div class="input-unit">
+              <input id="f-totalChol" name="totalChol" type="text" inputmode="decimal">
+              <span class="unit lipid-unit">mmol/L</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-hdl" data-i18n="fields.hdl">Colesterolo HDL</label>
+            <div class="input-unit">
+              <input id="f-hdl" name="hdl" type="text" inputmode="decimal">
+              <span class="unit lipid-unit">mmol/L</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-triglycerides"><span data-i18n="fields.triglycerides">Trigliceridi</span> <em class="opt" data-i18n="hints.optional">facoltativo</em></label>
+            <div class="input-unit">
+              <input id="f-triglycerides" name="triglycerides" type="text" inputmode="decimal">
+              <span class="unit lipid-unit">mmol/L</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-ldlMeasured"><span data-i18n="fields.ldlMeasured">LDL misurato</span> <em class="opt" data-i18n="hints.optional">facoltativo</em></label>
+            <div class="input-unit">
+              <input id="f-ldlMeasured" name="ldlMeasured" type="text" inputmode="decimal">
+              <span class="unit lipid-unit">mmol/L</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Diabete -->
+      <section class="card" id="card-diabetes" hidden>
+        <h2 data-i18n="sections.diabetes">Diabete tipo 2</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="f-ageAtDiagnosis" data-i18n="fields.ageAtDiagnosis">Età alla diagnosi</label>
+            <div class="input-unit">
+              <input id="f-ageAtDiagnosis" name="ageAtDiagnosis" type="text" inputmode="numeric" maxlength="3">
+              <span class="unit" data-i18n="hints.years">anni</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-hba1c" data-i18n="fields.hba1c">HbA1c</label>
+            <div class="input-unit">
+              <input id="f-hba1c" name="hba1c" type="text" inputmode="decimal">
+              <div class="seg seg-small seg-inline" role="radiogroup" aria-label="HbA1c">
+                <label><input type="radio" name="hba1cUnit" value="mmolMol" checked><span>mmol/mol</span></label>
+                <label><input type="radio" name="hba1cUnit" value="percent"><span>%</span></label>
+              </div>
+            </div>
+            <small class="hint" id="hba1c-hint"></small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Funzione renale -->
+      <section class="card">
+        <h2 data-i18n="sections.kidney">Funzione renale</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="f-egfr" data-i18n="fields.egfr">eGFR</label>
+            <div class="input-unit">
+              <input id="f-egfr" name="egfr" type="text" inputmode="decimal">
+              <span class="unit">mL/min/1.73 m²</span>
+            </div>
+            <small class="hint" id="egfr-hint"></small>
+          </div>
+          <div class="field">
+            <label for="f-acr"><span data-i18n="fields.acr">Albumina/creatinina urinaria (ACR)</span> <em class="opt" data-i18n="hints.optional">facoltativo</em></label>
+            <div class="input-unit">
+              <input id="f-acr" name="acr" type="text" inputmode="decimal">
+              <div class="seg seg-small seg-inline" role="radiogroup" aria-label="ACR">
+                <label><input type="radio" name="acrUnit" value="mg/mmol" checked><span>mg/mmol</span></label>
+                <label><input type="radio" name="acrUnit" value="mg/g"><span>mg/g</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="field field-wide">
+            <label class="check">
+              <input type="checkbox" name="egfrFromCreatinine" id="f-egfrFromCreatinine">
+              <span data-i18n="fields.egfrFromCreatinine">Calcola l'eGFR dalla creatinina (CKD-EPI 2021)</span>
+            </label>
+          </div>
+          <div class="field" id="field-creatinine" hidden>
+            <label for="f-creatinine" data-i18n="fields.creatinine">Creatinina</label>
+            <div class="input-unit">
+              <input id="f-creatinine" name="creatinine" type="text" inputmode="decimal">
+              <span class="unit">µmol/L</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Controllo preliminare -->
+      <section class="card">
+        <h2 data-i18n="sections.checklist">Controllo preliminare</h2>
+        <p class="muted" data-i18n="checklist.intro">Condizioni che definiscono il rischio senza bisogno dello score.</p>
+        <div class="checklist">
+          <label class="check"><input type="checkbox" name="ascvd"><span data-i18n="checklist.ascvd">ASCVD accertata</span></label>
+          <div class="diabetes-only" hidden>
+            <label class="check"><input type="checkbox" name="diabetesSevereTod"><span data-i18n="checklist.diabetesSevereTod">Danno d'organo severo da diabete</span></label>
+            <label class="check check-sub"><input type="checkbox" name="microvascular3Sites"><span data-i18n="checklist.microvascular3">Malattia microvascolare in almeno 3 distretti</span></label>
+          </div>
+          <div class="check-select">
+            <label for="f-ckd" data-i18n="checklist.ckd">Insufficienza renale cronica</label>
+            <select id="f-ckd" name="ckd">
+              <option value="none" data-i18n="checklist.ckdNone">no</option>
+              <option value="moderate" data-i18n="checklist.ckdModerate">moderata</option>
+              <option value="severe" data-i18n="checklist.ckdSevere">severa</option>
+            </select>
+          </div>
+          <div class="check-select">
+            <label for="f-fh" data-i18n="checklist.fh">Ipercolesterolemia familiare</label>
+            <select id="f-fh" name="fh">
+              <option value="none" data-i18n="checklist.fhNone">no</option>
+              <option value="fh" data-i18n="checklist.fhOnly">sì, senza altri fattori maggiori</option>
+              <option value="fhWithRiskFactor" data-i18n="checklist.fhPlus">sì, con ASCVD o un altro fattore maggiore</option>
+            </select>
+          </div>
+          <label class="check"><input type="checkbox" name="markedFactor"><span data-i18n="checklist.markedFactor">Fattore singolo marcatamente elevato</span></label>
+        </div>
+        <div id="suggestions" class="suggestions" aria-live="polite"></div>
+      </section>
+
+      <p class="privacy" data-i18n="app.privacy">Tutti i calcoli avvengono in questo computer.</p>
+    </form>
+
+    <aside class="results">
+      <section class="card result-card" id="result" aria-live="polite"></section>
+      <section class="card" id="whatif" hidden></section>
+      <p class="disclaimer" data-i18n="app.disclaimer"></p>
+    </aside>
+  </main>
+
+  <!-- Promemoria per il medico -->
+  <aside id="reminders" class="drawer" hidden aria-labelledby="reminders-title">
+    <div class="drawer-head">
+      <h2 id="reminders-title" data-i18n="reminders.title">Promemoria per il medico</h2>
+      <button type="button" class="btn" id="btn-reminders-close" data-i18n="actions.close">Chiudi</button>
+    </div>
+    <p class="muted" id="reminders-meta"></p>
+    <div id="reminders-body"></div>
+  </aside>
+
+  <!-- Impostazioni -->
+  <dialog id="settings" aria-labelledby="settings-title">
+    <form id="settings-form" method="dialog" autocomplete="off">
+      <div class="drawer-head">
+        <h2 id="settings-title" data-i18n="settings.title">Impostazioni</h2>
+        <button type="submit" class="btn" value="close" data-i18n="actions.close">Chiudi</button>
+      </div>
+
+      <fieldset>
+        <legend data-i18n="settings.general">Generale</legend>
+        <div class="grid">
+          <div class="field">
+            <label for="s-uiLanguage" data-i18n="settings.uiLanguage">Lingua dell'interfaccia</label>
+            <select id="s-uiLanguage" name="uiLanguage">
+              <option value="it">Italiano</option>
+              <option value="de">Deutsch</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="s-sheetLanguage" data-i18n="settings.sheetLanguage">Lingua del foglio paziente</label>
+            <select id="s-sheetLanguage" name="sheetLanguage">
+              <option value="it">Italiano</option>
+              <option value="de">Deutsch</option>
+            </select>
+          </div>
+          <div class="field field-wide">
+            <label for="s-region" data-i18n="settings.region">Regione di rischio</label>
+            <select id="s-region" name="region">
+              <option value="low" data-i18n="regions.low">Bassa (Svizzera)</option>
+              <option value="moderate" data-i18n="regions.moderate">Moderata</option>
+              <option value="high" data-i18n="regions.high">Alta</option>
+              <option value="veryHigh" data-i18n="regions.veryHigh">Molto alta</option>
+            </select>
+            <small class="hint" data-i18n="settings.regionHelp"></small>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="settings.practice">Intestazione dello studio</legend>
+        <div class="grid">
+          <div class="field field-wide">
+            <label for="s-name" data-i18n="settings.practiceName">Nome dello studio</label>
+            <input id="s-name" name="name" type="text" maxlength="300">
+          </div>
+          <div class="field">
+            <label for="s-doctors" data-i18n="settings.doctors">Medico o medici</label>
+            <input id="s-doctors" name="doctors" type="text" maxlength="300">
+          </div>
+          <div class="field">
+            <label for="s-specialty" data-i18n="settings.specialty">Specialità</label>
+            <input id="s-specialty" name="specialty" type="text" maxlength="300">
+          </div>
+          <div class="field field-wide">
+            <label for="s-address" data-i18n="settings.address">Indirizzo</label>
+            <input id="s-address" name="address" type="text" maxlength="300">
+          </div>
+          <div class="field">
+            <label for="s-phone" data-i18n="settings.phone">Telefono</label>
+            <input id="s-phone" name="phone" type="text" maxlength="300">
+          </div>
+          <div class="field">
+            <label for="s-email" data-i18n="settings.email">Email</label>
+            <input id="s-email" name="email" type="text" maxlength="300">
+          </div>
+          <div class="field field-wide">
+            <span class="label" data-i18n="settings.logo">Logo</span>
+            <div class="logo-row">
+              <img id="s-logo-preview" alt="" hidden>
+              <input id="s-logo" type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp,image/gif">
+              <button type="button" class="btn" id="s-logo-remove" data-i18n="settings.logoRemove" hidden>Rimuovi logo</button>
+            </div>
+            <small class="hint" data-i18n="settings.logoHelp"></small>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="settings.backup">Salvataggio</legend>
+        <div class="button-row">
+          <button type="button" class="btn" id="s-export" data-i18n="settings.export">Esporta impostazioni</button>
+          <label class="btn file-btn"><span data-i18n="settings.import">Importa impostazioni</span><input type="file" id="s-import" accept="application/json,.json"></label>
+          <button type="button" class="btn btn-danger" id="s-reset" data-i18n="settings.reset">Ripristina</button>
+        </div>
+        <p class="hint" id="s-status" role="status"></p>
+        <p class="hint" id="s-storage-note"></p>
+      </fieldset>
+    </form>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="src/calc/calibration.js"></script>
+  <script src="src/calc/score2.js"></script>
+  <script src="src/calc/score2op.js"></script>
+  <script src="src/calc/score2diabetes.js"></script>
+  <script src="src/calc/units.js"></script>
+  <script src="src/calc/egfr.js"></script>
+  <script src="src/calc/age.js"></script>
+  <script src="src/calc/risk.js"></script>
+  <script src="src/calc/categories.js"></script>
+  <script src="src/calc/checklist.js"></script>
+  <script src="src/calc/whatif.js"></script>
+  <script src="src/calc/assessment.js"></script>
+  <script src="src/reminders/sources.js"></script>
+  <script src="src/reminders/reminders.it.js"></script>
+  <script src="src/reminders/reminders.de.js"></script>
+  <script src="src/i18n/it.js"></script>
+  <script src="src/i18n/de.js"></script>
+  <script src="src/i18n/i18n.js"></script>
+  <script src="src/ui/settings.js"></script>
+  <script src="src/ui/app.js"></script>
+</body>
+</html>
