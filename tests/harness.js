@@ -40,7 +40,8 @@
           de: require('../src/reminders/reminders.de.js')
         },
         i18n: require('../src/i18n/i18n.js'),
-        settings: require('../src/ui/settings.js')
+        settings: require('../src/ui/settings.js'),
+        axenita: require('../src/ui/axenita.js')
       }
     };
     return;
