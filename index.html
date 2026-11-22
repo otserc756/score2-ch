@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
+  <!-- Beta: la pagina non deve comparire nei motori di ricerca -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file:; img-src 'self' file: data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
   <title>SCORE2 · Rischio CV</title>
   <meta name="theme-color" content="#0f5ea8">
@@ -270,6 +273,27 @@
     <p class="muted" id="reminders-meta"></p>
     <div id="reminders-body"></div>
   </aside>
+
+  <!-- Avviso al primo avvio -->
+  <dialog id="disclaimer" aria-labelledby="disclaimer-title">
+    <div class="drawer-head">
+      <h2 id="disclaimer-title" data-i18n="disclaimer.title">Prima di iniziare</h2>
+      <div class="seg seg-small" role="radiogroup" aria-label="Lingua / Sprache">
+        <label><input type="radio" name="disclaimerLanguage" value="it"><span>IT</span></label>
+        <label><input type="radio" name="disclaimerLanguage" value="de"><span>DE</span></label>
+      </div>
+    </div>
+    <ul class="disclaimer-list">
+      <li data-i18n="disclaimer.purpose"></li>
+      <li data-i18n="disclaimer.notDevice"></li>
+      <li data-i18n="disclaimer.interpret"></li>
+      <li id="disclaimer-beta" data-i18n="disclaimer.beta" hidden></li>
+      <li data-i18n="disclaimer.privacy"></li>
+    </ul>
+    <div class="button-row disclaimer-actions">
+      <button type="button" class="btn btn-primary" id="btn-disclaimer-ok" data-i18n="disclaimer.accept">Ho capito, continua</button>
+    </div>
+  </dialog>
 
   <!-- Impostazioni -->
   <dialog id="settings" aria-labelledby="settings-title">

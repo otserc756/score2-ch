@@ -37,7 +37,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Prepara i file del sito
-        run: bash scripts/build-site.sh _site "$(date -u +%Y%m%d)-${GITHUB_SHA::7}"
+        run: |
+          bash scripts/build-site.sh _site "$(date -u +%Y%m%d)-${GITHUB_SHA::7}"
+          # Sul sito solo l'app: README e licenza restano nel repository e nello zip della release
+          rm -f _site/README.md _site/LICENSE
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
