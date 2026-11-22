@@ -1,0 +1,29 @@
+# Quando si crea un tag di versione (es. v1.0.0) prepara lo zip da scaricare
+# per l'installazione da cartella locale e lo allega a una release di GitHub.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test
+        run: node --test tests/*.test.js
+      - name: Prepara lo zip
+        run: |
+          bash scripts/build-site.sh "dist/score2-ch" "$GITHUB_REF_NAME"
+          cd dist && zip -r -q "score2-ch-${GITHUB_REF_NAME}.zip" score2-ch
+      - name: Crea la release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" "dist/score2-ch-${GITHUB_REF_NAME}.zip" --title "$GITHUB_REF_NAME" --generate-notes

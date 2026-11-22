@@ -1,10 +1,10 @@
 {
   "name": "score2-ch",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Rischio cardiovascolare a 10 anni con SCORE2, SCORE2-OP e SCORE2-Diabetes (ESC), calibrato per la Svizzera",
   "license": "MIT",
   "scripts": {
-    "test": "node --test tests/"
+    "test": "node --test tests/*.test.js"
   }
 }
