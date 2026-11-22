@@ -33,7 +33,11 @@
         categories: require('../src/calc/categories.js'),
         checklist: require('../src/calc/checklist.js'),
         whatif: require('../src/calc/whatif.js'),
-        assessment: require('../src/calc/assessment.js')
+        assessment: require('../src/calc/assessment.js'),
+        reminders: {
+          sources: require('../src/reminders/sources.js'),
+          it: require('../src/reminders/reminders.it.js')
+        }
       }
     };
     return;
