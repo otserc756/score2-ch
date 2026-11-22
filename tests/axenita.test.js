@@ -24,6 +24,16 @@
     assert.ok(s.indexOf('ß') < 0);
   });
 
+  test('Axenita: categoria ESC/EAS 2025 solo se l\'opzione è attiva', function () {
+    var a = A.assess(ex, {});
+    var off = X.buildLine(a, ex, 'it');
+    var on = X.buildLine(a, ex, 'it', { esc2025: true });
+    assert.ok(off.indexOf('ESC/EAS 2025') < 0, off);
+    assert.ok(on.indexOf('– rischio molto alto (ESC/EAS 2025: alto) (M, 69 a') > 0, on);
+    var de = X.buildLine(a, ex, 'de', { esc2025: true });
+    assert.ok(de.indexOf('Risiko sehr hoch (ESC/EAS 2025: hoch)') > 0, de);
+  });
+
   test('Axenita: nessun dato anagrafico anche se presente nell\'input', function () {
     var p = Object.assign({ firstName: 'Mario', lastName: 'Rossi', birthDate: '15.03.1957' }, ex);
     var s = line(p);

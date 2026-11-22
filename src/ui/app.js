@@ -285,6 +285,12 @@
 
     // Note: condizioni, avvisi, errori
     const notes = el('ul', { class: 'notes' });
+    if (a.esc2025 && a.esc2025.differs) {
+      notes.appendChild(el('li', { class: 'note-info', text: t('result.esc2025', {
+        category: t('categories.' + a.esc2025.category),
+        target: ldlTargetText(a.esc2025.ldlTarget)
+      }) }));
+    }
     a.checklist.conditions.forEach((c) => {
       notes.appendChild(el('li', { class: 'note-condition', text: t('conditions.' + c.code) }));
     });
@@ -370,7 +376,7 @@
   }
 
   function renderAxenita(a, r) {
-    const line = E.axenita.buildLine(a, r.input, lang);
+    const line = E.axenita.buildLine(a, r.input, lang, { esc2025: settings.axenitaEsc2025 });
     const box = $('axenita-line');
     box.value = line || '';
     box.placeholder = t('axenita.empty');
@@ -497,6 +503,7 @@
     sform.elements.uiLanguage.value = settings.uiLanguage;
     sform.elements.sheetLanguage.value = settings.sheetLanguage;
     sform.elements.region.value = settings.region;
+    sform.elements.axenitaEsc2025.checked = settings.axenitaEsc2025;
     PRACTICE.forEach((f) => { sform.elements[f].value = settings.practice[f]; });
     const prev = $('s-logo-preview');
     prev.hidden = !settings.practice.logo;
@@ -524,6 +531,7 @@
     settings.uiLanguage = sform.elements.uiLanguage.value;
     settings.sheetLanguage = sform.elements.sheetLanguage.value;
     settings.region = sform.elements.region.value;
+    settings.axenitaEsc2025 = sform.elements.axenitaEsc2025.checked;
     PRACTICE.forEach((f) => { settings.practice[f] = sform.elements[f].value; });
     settings = E.settings.sanitize(settings, E.settings.defaults());
   }

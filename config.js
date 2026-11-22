@@ -9,6 +9,7 @@ window.ESC_CONFIG = {
   uiLanguage: 'it',      // 'it' | 'de'
   sheetLanguage: 'it',   // lingua del foglio paziente: 'it' | 'de'
   region: 'low',         // 'low' (Svizzera) | 'moderate' | 'high' | 'veryHigh'
+  axenitaEsc2025: false, // true: la riga per Axenita riporta anche la categoria ESC/EAS 2025 se diversa
   practice: {
     name: '',            // es. 'Studio medico ...'
     doctors: '',         // es. 'Dr. med. ...'

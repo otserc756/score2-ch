@@ -64,9 +64,11 @@
    * @param {object} a     risultato di assessment.assess()
    * @param {object} input input normalizzato passato ad assess()
    * @param {string} lang  'it' | 'de'
+   * @param {{esc2025?:boolean}} [opts] esc2025: aggiunge la categoria ESC/EAS 2025 se diversa
    * @returns {string|null} null se non c'è niente da riportare
    */
-  function buildLine(a, input, lang) {
+  function buildLine(a, input, lang, opts) {
+    opts = opts || {};
     var t = function (key, params) { return i18n.t(lang, key, params); };
     if (!a || (!a.calc.ok && !a.category)) return null;
 
@@ -81,6 +83,9 @@
         categories.roundPercent(a.calc.risk).toFixed(1) + '% ' + t('axenita.tenYear');
       if (!a.checklist.scoreApplies) line += ', ' + t('axenita.notApplicable');
       line += ' – ' + t('axenita.risk', { category: cat });
+      if (opts.esc2025 && a.esc2025 && a.esc2025.differs) {
+        line += ' ' + t('axenita.esc2025', { category: t('categories.' + a.esc2025.category) });
+      }
       if (a.categoryFromConditions || !a.checklist.scoreApplies) line += ' ' + t('axenita.dueTo', { list: conds });
       else if (conds) line += '; ' + t('axenita.alsoChecked', { list: conds });
       line += detText + '.';

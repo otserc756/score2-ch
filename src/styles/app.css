@@ -189,6 +189,7 @@ input.invalid, select.invalid { border-color: var(--danger); background: #fff7f6
 .notes li { padding: .5rem .65rem; border-radius: 7px; font-size: .86rem; border-left: 4px solid; }
 .note-condition { background: var(--risk-veryhigh-bg); border-color: var(--risk-veryhigh); }
 .note-warning { background: var(--risk-moderate-bg); border-color: #d4a800; }
+.note-info { background: var(--accent-soft); border-color: var(--accent); }
 .note-error { background: #f3f4f6; border-color: var(--border-strong); }
 
 .btn-print { width: 100%; padding: .65rem; font-size: 1rem; }

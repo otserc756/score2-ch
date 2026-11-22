@@ -19,6 +19,7 @@
     uiLanguage: 'it',
     sheetLanguage: 'it',
     region: 'low',
+    axenitaEsc2025: false,
     practice: { name: '', doctors: '', specialty: '', address: '', phone: '', email: '', logo: '' }
   };
 
@@ -41,6 +42,7 @@
       uiLanguage: LANGS.indexOf(o.uiLanguage) >= 0 ? o.uiLanguage : b.uiLanguage,
       sheetLanguage: LANGS.indexOf(o.sheetLanguage) >= 0 ? o.sheetLanguage : b.sheetLanguage,
       region: REGIONS.indexOf(o.region) >= 0 ? o.region : b.region,
+      axenitaEsc2025: typeof o.axenitaEsc2025 === 'boolean' ? o.axenitaEsc2025 : !!b.axenitaEsc2025,
       practice: {}
     };
     var p = o.practice && typeof o.practice === 'object' ? o.practice : {};

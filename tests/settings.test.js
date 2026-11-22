@@ -31,7 +31,13 @@
     assert.equal(s.patient, undefined);
     assert.equal(s.sbp, undefined);
     assert.equal(s.practice.extra, undefined);
-    assert.deepEqual(Object.keys(s).sort(), ['practice', 'region', 'sheetLanguage', 'uiLanguage']);
+    assert.deepEqual(Object.keys(s).sort(), ['axenitaEsc2025', 'practice', 'region', 'sheetLanguage', 'uiLanguage']);
+  });
+
+  test('Impostazioni: opzione ESC/EAS 2025 per la riga Axenita (predefinita: no)', function () {
+    assert.equal(S.sanitize({}).axenitaEsc2025, false);
+    assert.equal(S.sanitize({ axenitaEsc2025: true }).axenitaEsc2025, true);
+    assert.equal(S.sanitize({ axenitaEsc2025: 'sì' }).axenitaEsc2025, false);
   });
 
   test('Impostazioni: testi troppo lunghi troncati a 300 caratteri', function () {
