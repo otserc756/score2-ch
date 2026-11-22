@@ -28,6 +28,11 @@
   function hba1cPercentToMmolMol(percent) { return (percent - 2.15) * 10.929; }
   function hba1cMmolMolToPercent(mmolMol) { return mmolMol / 10.929 + 2.15; }
 
+  /** Rapporto albumina/creatinina urinaria: mg/mmol (uso svizzero) → mg/g. 3 mg/mmol ≈ 30 mg/g. */
+  var ACR_MGG_PER_MGMMOL = 8.84;
+  function acrMgMmolToMgG(mgMmol) { return mgMmol * ACR_MGG_PER_MGMMOL; }
+  function acrMgGToMgMmol(mgG) { return mgG / ACR_MGG_PER_MGMMOL; }
+
   function creatinineUmolToMgdl(umol) { return umol / CREAT_UMOL_PER_MGDL; }
   function creatinineMgdlToUmol(mgdl) { return mgdl * CREAT_UMOL_PER_MGDL; }
 
@@ -56,6 +61,9 @@
     tgMmolToMgdl: tgMmolToMgdl,
     hba1cPercentToMmolMol: hba1cPercentToMmolMol,
     hba1cMmolMolToPercent: hba1cMmolMolToPercent,
+    ACR_MGG_PER_MGMMOL: ACR_MGG_PER_MGMMOL,
+    acrMgMmolToMgG: acrMgMmolToMgG,
+    acrMgGToMgMmol: acrMgGToMgMmol,
     creatinineUmolToMgdl: creatinineUmolToMgdl,
     creatinineMgdlToUmol: creatinineMgdlToUmol,
     nonHdl: nonHdl,
