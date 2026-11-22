@@ -245,6 +245,9 @@ dialog {
   box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
 }
 dialog::backdrop { background: rgba(20, 24, 30, .35); }
+#disclaimer { width: min(560px, calc(100vw - 2rem)); }
+.disclaimer-list { margin: .8rem 0 1rem; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .55rem; }
+.disclaimer-actions { justify-content: flex-end; }
 fieldset { border: 1px solid var(--border); border-radius: 8px; margin: .9rem 0 0; padding: .8rem 1rem 1rem; }
 legend { font-weight: 700; padding: 0 .3rem; }
 .logo-row { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }

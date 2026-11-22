@@ -197,6 +197,15 @@
       storageUnavailable: 'Dieser Browser erlaubt das Speichern der Einstellungen nicht: Sie gelten nur, bis die Seite geschlossen wird.',
       version: 'Version {version} ({build})'
     },
+    disclaimer: {
+      title: 'Bevor Sie beginnen',
+      purpose: 'Diese App ist ein Hilfsmittel zur klinischen Entscheidungsfindung für Ärztinnen und Ärzte.',
+      notDevice: 'Sie ist kein zertifiziertes Medizinprodukt.',
+      interpret: 'Das Ergebnis ist eine statistische Schätzung: Es muss ärztlich zusammen mit der klinischen Situation beurteilt werden und ersetzt weder das klinische Urteil noch die Originalleitlinien. Die Anwendung erfolgt in ärztlicher Verantwortung.',
+      beta: 'Es handelt sich um eine Beta-Version in der Testphase.',
+      privacy: 'Patientendaten bleiben auf diesem Computer: Sie werden weder gespeichert noch übermittelt.',
+      accept: 'Verstanden, weiter'
+    },
     reminders: {
       title: 'Hinweise für die Ärztin / den Arzt',
       updated: 'Inhalte am {date} anhand der ESC-Leitlinien überprüft.',

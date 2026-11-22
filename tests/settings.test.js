@@ -76,6 +76,26 @@
     assert.deepEqual(back, orig);
   });
 
+  test('Avviso iniziale: da mostrare finché non viene confermato', function () {
+    var st = memoryStorage();
+    assert.equal(S.disclaimerAccepted(st), false);
+    assert.equal(S.acceptDisclaimer(st), true);
+    assert.equal(S.disclaimerAccepted(st), true);
+    assert.equal(st.getItem(S.DISCLAIMER_KEY), String(S.DISCLAIMER_VERSION));
+  });
+
+  test('Avviso iniziale: si ripresenta se cambia la versione del testo', function () {
+    var st = memoryStorage();
+    st.setItem(S.DISCLAIMER_KEY, String(S.DISCLAIMER_VERSION - 1));
+    assert.equal(S.disclaimerAccepted(st), false);
+  });
+
+  test('Avviso iniziale: senza archivio si mostra sempre', function () {
+    var broken = { getItem: function () { throw new Error('no'); }, setItem: function () { throw new Error('no'); }, removeItem: function () {} };
+    assert.equal(S.disclaimerAccepted(broken), false);
+    assert.equal(S.acceptDisclaimer(broken), false);
+  });
+
   test('Impostazioni: file estraneo rifiutato', function () {
     assert.throws(function () { S.importJson('{"foo":1}'); });
     assert.throws(function () { S.importJson('non json'); });

@@ -93,6 +93,25 @@
     if (s) { try { s.removeItem(KEY); } catch (e) { /* niente da fare */ } }
   }
 
+  /*
+   * Avviso al primo avvio: si ricorda solo che è stato confermato (e per quale versione del testo).
+   * Se il testo dell'avviso cambia in modo sostanziale, aumentare DISCLAIMER_VERSION.
+   */
+  var DISCLAIMER_KEY = 'escscore.disclaimer';
+  var DISCLAIMER_VERSION = 1;
+
+  function disclaimerAccepted(storage) {
+    var s = getStorage(storage);
+    if (!s) return false;
+    try { return Number(s.getItem(DISCLAIMER_KEY)) >= DISCLAIMER_VERSION; } catch (e) { return false; }
+  }
+
+  function acceptDisclaimer(storage) {
+    var s = getStorage(storage);
+    if (!s) return false;
+    try { s.setItem(DISCLAIMER_KEY, String(DISCLAIMER_VERSION)); return true; } catch (e) { return false; }
+  }
+
   function exportJson(settings) {
     return JSON.stringify({ app: 'score2-ch', version: 1, settings: sanitize(settings, defaults()) }, null, 2);
   }
@@ -117,6 +136,10 @@
     load: load,
     save: save,
     clear: clear,
+    DISCLAIMER_KEY: DISCLAIMER_KEY,
+    DISCLAIMER_VERSION: DISCLAIMER_VERSION,
+    disclaimerAccepted: disclaimerAccepted,
+    acceptDisclaimer: acceptDisclaimer,
     exportJson: exportJson,
     importJson: importJson
   };

@@ -197,6 +197,15 @@
       storageUnavailable: 'Questo browser non permette di salvare le impostazioni: valgono solo fino alla chiusura della pagina.',
       version: 'Versione {version} ({build})'
     },
+    disclaimer: {
+      title: 'Prima di iniziare',
+      purpose: 'Questa app è uno strumento di supporto alla decisione clinica, destinato ai medici.',
+      notDevice: 'Non è un dispositivo medico certificato.',
+      interpret: 'Il risultato è una stima statistica: va interpretato dal medico insieme alla situazione clinica del paziente e non sostituisce il giudizio clinico né le linee guida originali. L\'uso avviene sotto la responsabilità del medico.',
+      beta: 'È una versione beta, in fase di prova.',
+      privacy: 'I dati dei pazienti restano su questo computer: non vengono salvati né inviati.',
+      accept: 'Ho capito, continua'
+    },
     reminders: {
       title: 'Promemoria per il medico',
       updated: 'Contenuti verificati sulle linee guida ESC al {date}.',

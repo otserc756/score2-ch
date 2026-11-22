@@ -602,6 +602,30 @@
     });
   }
 
+  // ---------------------------------------------------------------- avviso al primo avvio
+  function showDisclaimerIfNeeded() {
+    if (E.settings.disclaimerAccepted()) return;
+    const dlg = $('disclaimer');
+    $('disclaimer-beta').hidden = !(E.version && E.version.channel === 'beta');
+    setRadio('disclaimerLanguage', lang, dlg);
+    dlg.querySelectorAll('input[name="disclaimerLanguage"]').forEach((r) => {
+      r.addEventListener('change', () => {
+        settings.uiLanguage = r.value;
+        persist();
+        applySettings();
+        setRadio('disclaimerLanguage', lang, dlg);
+      });
+    });
+    // Esc non chiude l'avviso: serve la conferma
+    dlg.addEventListener('cancel', (e) => e.preventDefault());
+    $('btn-disclaimer-ok').addEventListener('click', () => {
+      E.settings.acceptDisclaimer();
+      dlg.close();
+      field('firstName').focus();
+    });
+    dlg.showModal();
+  }
+
   // ---------------------------------------------------------------- avvio
   function init() {
     applyTranslations();
@@ -635,6 +659,7 @@
 
     bindSettings();
     update();
+    if (!document.body.classList.contains('sheet-preview')) showDisclaimerIfNeeded();
   }
 
   // Per le fasi successive (riga Axenita, foglio paziente) e per i test manuali
